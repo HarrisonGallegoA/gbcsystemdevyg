@@ -180,7 +180,8 @@
 <script>
     Swal.fire({
   icon: 'success',
-  title: 'Se guardo el Domo',
+  title: 'Perfecto!',
+  text: 'El domo se guardo correctamente!',
   showConfirmButton: false,
   timer: 2500
 

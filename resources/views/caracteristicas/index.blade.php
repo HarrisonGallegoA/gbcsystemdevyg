@@ -94,7 +94,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Detalle</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">estado</th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -119,7 +119,7 @@
 
                           {{--   <form action="{{route('caracteristicaEliminar', $caracteristica)}}" method="post"
                                 class="formulario-eliminar"> --}}
-                                <a href="#mostrarCaracteristica{{$caracteristica->id}}" data-toggle="modal"
+                                <a href="{{$caracteristica->id}}" data-toggle="modal"
                                     data-target="#mostrarCaracteristica{{$caracteristica->id}}"><i
                                         class="fas fa-info-circle fa-lg text-success"></i></a>
                                 <a href="#editarCaracteristica{{$caracteristica->id}}" data-toggle="modal"
@@ -185,7 +185,7 @@
                         </div>
                         <div class="form-group">
                             <label for="estado">Estado</label>
-                            <select class="form-control" name="estado" id="estado">
+                            <select class="form-control" name="estado" id="estado" disabled>
                                 <option value="1">Activo</option>
                                 <option value="2">Inactivo</option> 
                             </select>
