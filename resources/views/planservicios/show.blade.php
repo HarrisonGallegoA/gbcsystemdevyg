@@ -60,8 +60,7 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-info col-10" href="#servicios{{ $value->id }}"  data-toggle="modal"
-                                data-target="#servicios" ><i class="fa-solid fa-eye">
+                            <a class="btn btn-info col-10" href="/plan/listar?id={{$value->id}}"><i class="fa-solid fa-eye">
                             </a></i>
                         </td>
                         <td>
@@ -84,7 +83,7 @@
 
 
 <!-- Modal -->
- <div class="modal fade" id="servicios" href="/plan/listar?id={{$value->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ {{-- <div class="modal fade" id="servicios{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -131,14 +130,10 @@
             </div>
         </div>
     </div>
-</div> 
+</div>  --}}
 
 
-
-
-
-
-{{-- @if(count($servicios) > 0)
+ @if(count($servicios) > 0)
 <div class="card shadow mb-4 col-10">
     <div class="card-body">
         <div class="table-responsive">
@@ -166,7 +161,8 @@
         </div>
     </div>
 </div>
-@endif  --}}
+@endif
+
 
 @endsection
 

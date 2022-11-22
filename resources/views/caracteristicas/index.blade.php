@@ -114,7 +114,7 @@
                             
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif
-                        </td>
+                        </td>   
                         <td>
 
                           {{--   <form action="{{route('caracteristicaEliminar', $caracteristica)}}" method="post"
@@ -122,10 +122,9 @@
                                 <a href="{{$caracteristica->id}}" data-toggle="modal"
                                     data-target="#mostrarCaracteristica{{$caracteristica->id}}"><i
                                         class="fas fa-info-circle fa-lg text-success"></i></a>
-                                <a href="#editarCaracteristica{{$caracteristica->id}}" data-toggle="modal"
+                                <a class="btn btn-warning" href="#editarCaracteristica{{$caracteristica->id}}" data-toggle="modal"
                                     data-target="#editarCaracteristica{{$caracteristica->id}}"
-                                    style="margin-left: 20px; margin-right: 20px;"><i
-                                        class="fas fa-user-edit fa-lg"></i></a>
+                                    style="margin-left: 20px; margin-right: 20px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 
                                 {{-- @csrf @method('DELETE')
                                 <button type="submit " style="border: none"><i

@@ -11,7 +11,7 @@ use DB;
 class DomoCaracteristicaController extends Controller
 {
     public function index(){
-        $caracteristicas = Caracteristica::all(); 
+        $caracteristicas = Caracteristica::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
         return view('domocaracteristica.index', compact('caracteristicas')); 
     }
