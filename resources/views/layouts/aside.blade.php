@@ -17,7 +17,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </li>
-        
+
             <!-- Divider -->
             <!--<hr class="sidebar-divider">-->
 
@@ -88,7 +88,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Reservas</h6>
-                        <a class="collapse-item" href="#">Agenda</a>
+                        <a class="collapse-item" href="{{ route('Agenda')}}">Agenda</a>
+                        <a class="collapse-item" href="{{ route('Reserva')}}">Reserva</a>
                     </div>
                 </div>
             </li>
@@ -120,7 +121,7 @@
                     <i class="fa-solid fa-tv"></i>
                     <span>Caracteristicas</span></a>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="bi bi-chat-heart"></i>
@@ -142,6 +143,6 @@
             </div>
 
             <!-- Sidebar Message -->
-           
+
 
         </ul>

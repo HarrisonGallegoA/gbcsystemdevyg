@@ -21,7 +21,7 @@
     <link href="{{asset('asset/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!--Datatable-->
     <link href="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-    
+
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -42,11 +42,17 @@
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
 
 
+    <!-- links agenda -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.css">
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales-all.js"></script>
+    
+
     <!-- links prueba -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>  
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="[https://pro.fontawesome.com/releases/v5.10.0/css/all.css](https://pro.fontawesome.com/releases/v5.10.0/css/all.css)" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
- 
+
 </head>
 
 <body id="page-top">
@@ -258,10 +264,10 @@
                     {{-- </div> --}}
 
                     <!-- Content Row -->
-                    
+
                         @yield('Contenido_app')
-                        
-                    
+
+
 
 
                 </div>
@@ -312,6 +318,9 @@
             </div>
         </div>
     </div>
+        <!--agenda-->
+    <script src="{{ asset('asset/js/agenda.js') }}" defer></script>
+    <script src="{{ asset('asset/js/app.js') }}" defer></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('asset/vendor/jquery/jquery.min.js')}}"></script>
@@ -345,7 +354,7 @@
             });
         });
     </script> --}}
-    
+
     <!-- scripts alertas -->
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

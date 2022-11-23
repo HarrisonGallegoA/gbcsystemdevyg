@@ -17,7 +17,7 @@
 <div class="modal fade" id="crearServicio" tabindex="-1" role="dialog" aria-labelledby="crearServicio" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header"> 
+            <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Crear Servicio</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -67,7 +67,7 @@
                         <label for="estado">Estado</label>
                         <select class="form-control" name="estado" id="estado">
                             <option value="1">Activo</option>
-                            <option value="2">Inactivo</option> 
+                            <option value="2">Inactivo</option>
                         </select>
 
                     </div>
@@ -118,16 +118,16 @@
                         <td>{{$servicio->tiempo}}</td>
                         <td>
                             @if($servicio->estado == 1)
-                            
+
                             <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
-                            
+
                             @elseif ($servicio->estado == 2)
-                            
+
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif
                         </td>
                         <td>
-                            
+
                             {{-- <form action="{{route('servicioEliminar', $servicio)}}" method="post" class="formulario-eliminar">
                                 <a href="#mostrarServicio{{$servicio->id}}" data-toggle="modal"
                                     data-target="#mostrarServicio{{$servicio->id}}"><i
@@ -196,9 +196,9 @@
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado" disabled>
                                 <option value="1">Activo</option>
-                                <option value="2">Inactivo</option> 
+                                <option value="2">Inactivo</option>
                             </select>
-    
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -238,7 +238,7 @@
                                 placeholder="Ingrese el nombre del servicio" value="{{old('nombre', $servicio->nombre)}}">
                             <small class="text-danger">{{$errors->first('nombre')}}</small>
                         </div>
-    
+
                         <div class="form-group">
                             <label for="descripcion">descripcion</label>
                             <textarea class="form-control" name="descripcion" id="descripcion"
@@ -266,9 +266,9 @@
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado">
                                 <option value="1">Activo</option>
-                                <option value="2">Inactivo</option> 
+                                <option value="2">Inactivo</option>
                             </select>
-    
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -314,11 +314,11 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                
+
             }
         })
-    });    
-    
+    });
+
 </script>
 
 @if (session('mensaje')=="Servicio eliminado")

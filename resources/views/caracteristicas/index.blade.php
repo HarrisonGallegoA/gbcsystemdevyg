@@ -60,7 +60,7 @@
                         <label for="estado">Estado</label>
                         <select class="form-control" name="estado" id="estado">
                             <option value="1">Activo</option>
-                            <option value="2">Inactivo</option> 
+                            <option value="2">Inactivo</option>
                         </select>
 
                     </div>
@@ -107,11 +107,11 @@
                         <td>{{$caracteristica->cantidad}}</td>
                         <td>
                             @if($caracteristica->estado == 1)
-                            
+
                             <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
-                            
+
                             @elseif ($caracteristica->estado == 2)
-                            
+
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif
                         </td>
@@ -134,11 +134,11 @@
                         </td>
                         {{-- <td>
                             @if($caracteristica->estado == 1)
-                            
+
                             <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
-                            
+
                             @elseif ($caracteristica->estado == 2)
-                            
+
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif</td>
                         <td> --}}
@@ -187,9 +187,9 @@
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado">
                                 <option value="1">Activo</option>
-                                <option value="2">Inactivo</option> 
+                                <option value="2">Inactivo</option>
                             </select>
-    
+
                         </div>
 
                         <div class="modal-footer">
@@ -246,9 +246,9 @@
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado">
                                 <option value="1">Activo</option>
-                                <option value="2">Inactivo</option> 
+                                <option value="2">Inactivo</option>
                             </select>
-    
+
                         </div>
 
                         <div class="modal-footer">
@@ -291,11 +291,11 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                
+
             }
         })
-    });    
-    
+    });
+
 </script>
 
 @if (session('mensaje')=="Caracteristica eliminada")
