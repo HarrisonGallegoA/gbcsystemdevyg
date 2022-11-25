@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w_YvQx_muSCC1uQemsLUdV3-XOTaKAiJgw&usqp=CAU">
 
     <title>GBCSystem - Administrador</title>
 
@@ -237,10 +238,13 @@
                                     Configuración
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+                                <a class="dropdown-item" href="{{ route('logout') }}" >{{-- data-toggle="modal" data-target="#logoutModal" --}}
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Salir
+                                    {{ __('Log Out') }}
                                 </a>
+                            </form>
                             </div>
                         </li>
 

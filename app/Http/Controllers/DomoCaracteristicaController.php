@@ -15,7 +15,7 @@ class DomoCaracteristicaController extends Controller
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
         return view('domocaracteristica.index', compact('caracteristicas')); 
     }
-
+    
     public function save(Request $request){
 
             $input = $request->all();
