@@ -132,10 +132,9 @@
                                 <a href="#mostrarServicio{{$servicio->id}}" data-toggle="modal"
                                     data-target="#mostrarServicio{{$servicio->id}}"><i
                                         class="fas fa-info-circle fa-lg text-success"></i></a> --}}
-                                <a href="#editarServicio{{$servicio->id}}" data-toggle="modal"
+                                <a class="btn btn-warning" href="#editarServicio{{$servicio->id}}" data-toggle="modal"
                                     data-target="#editarServicio{{$servicio->id}}"
-                                    style="margin-left: 20px; margin-right: 20px;"><i
-                                        class="fas fa-user-edit fa-lg"></i></a>
+                                    style="margin-left: 20px; margin-right: 20px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
 
                                 {{-- @csrf @method('DELETE')
                                 <button type="submit " style="border: none"><i
@@ -198,7 +197,10 @@
                                 <option value="1">Activo</option>
                                 <option value="2">Inactivo</option>
                             </select>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 58b9f956979fc516fa1111ec86763cfe024cdb95
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -18,7 +18,7 @@ class CaracteristicasController extends Controller
     public function guardar(){
 
         $campos=request()->validate([
-            'nombre'=>'required|min:3',
+            'nombre'=>'required|min:3|max:20',
             'detalle'=>'required',
             'cantidad'=>'required',
             'estado'=>'required'

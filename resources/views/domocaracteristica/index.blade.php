@@ -139,7 +139,14 @@
                     if(cantidad > 0){
                         
                         if (existe) {
-                            alert("la caracteristica ya existe")
+
+                            Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'La caracteristica ya existe!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
 
                         } else {
                             caracteristicasD.push(caracteristica_id)
@@ -160,7 +167,13 @@
                         }   
 
                     }else{
-                        alert("Se debe ingresar una cantidad");
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Es necesario agregar una cantidad!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }  
                 }
 

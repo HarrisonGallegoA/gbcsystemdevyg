@@ -147,7 +147,13 @@
                                         
                         
                         if (existe) {
-                            alert("El servicio ya existe")
+                            Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'El servicio ya existe!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                             
                         } else {
                             serviciosD.push(servicio_id)
