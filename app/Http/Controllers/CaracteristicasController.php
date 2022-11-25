@@ -1,9 +1,9 @@
-<?php
+<?sphp
 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Caracteristica; 
+use App\Models\Caracteristica;
 
 
 class CaracteristicasController extends Controller
@@ -22,13 +22,13 @@ class CaracteristicasController extends Controller
             'detalle'=>'required',
             'cantidad'=>'required',
             'estado'=>'required'
-    
+
         ]);
         Caracteristica::create($campos);
 
-        return redirect('caracteristicas')->with('mensaje', 'Caracteristica guardada'); 
-    
-    }   
+        return redirect('caracteristicas')->with('mensaje', 'Caracteristica guardada');
+
+    }
 
     public function actualizar(Caracteristica $caracteristica){
 
@@ -37,10 +37,10 @@ class CaracteristicasController extends Controller
             'detalle'=>'required',
             'cantidad'=>'required',
             'estado'=>'required',
-    
+
         ]);
         $caracteristica->update($campos);
-    
+
         return redirect('caracteristicas')->with('mensaje', 'Caracteristica actualizada');
     }
 
@@ -49,5 +49,5 @@ class CaracteristicasController extends Controller
     {
         $caracteristica->delete();
         return redirect('caracteristicas')->with('mensaje', 'Caracteristica eliminada');
-    } */ 
+    } */
 }

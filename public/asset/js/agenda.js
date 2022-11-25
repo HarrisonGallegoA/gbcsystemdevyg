@@ -15,13 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
             right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
 
+
         events: "http://127.0.0.1:8000/agenda/mostrar",
-        dateClick: function (info) {
+        dateClick: function (info)  {
+
+
             var actual = new Date();
             if(info.date >= actual){
-              info.dayEl.style.backgroundColor = '';
-              $("#ModalAgenda").modal();
-              document.getElementById("dia").innerHTML= info.dateStr;
+             /*  info.dayEl.style.backgroundColor = ''; */
+             /*  $("#ModalAgenda").modal(); */
+              /* document.getElementById("dia").innerHTML= info.dateStr; */
             }else{
                 Swal.fire({
                     icon: 'error',
@@ -29,16 +32,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     text: 'No se puede solicitar un Domo en una fecha vencida!',
 
                   })
-
              }
+
             formularioAgenda.reset();
             $("#ModalAgenda").modal("show");
             $("#btnGuardar").attr('disabled', false);
             $("#btnModificar").attr('disabled', true);
             $("#btnEliminar").attr('disabled', true);
-
         },
         eventClick: function (info) {
+        /*     formulario.reset(); */
 
             var agenda = info.event;
             axios.get("http://127.0.0.1:8000/agenda/mostrar/" + agenda.id)
