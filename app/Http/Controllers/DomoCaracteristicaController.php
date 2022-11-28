@@ -6,23 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Caracteristica;
 use App\Models\Domo;
 use App\Models\DomoCaracteristica;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class DomoCaracteristicaController extends Controller
 {
     public function index(){
         $caracteristicas = Caracteristica::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
-        return view('domocaracteristica.index', compact('caracteristicas')); 
+        return view('domocaracteristica.index', compact('caracteristicas'));
     }
-    
+
     public function save(Request $request){
 
             $input = $request->all();
-            try{ 
+            try{
                 DB::beginTransaction();
             $domo = Domo::create([
-                
+
                 "nombre"=>$input["nombre"],
                 "descripcion"=>$input["descripcion"],
                 "capacidad"=>$input["capacidad"],
@@ -40,8 +40,8 @@ class DomoCaracteristicaController extends Controller
 
                 $ins = Caracteristica::find($value);
                 /*  if($input["cantidades"] <= "cantidad"->$ins->cantidad)  */
-                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]); 
-                 
+                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);
+
             }
 
                 DB::commit();
@@ -50,7 +50,7 @@ class DomoCaracteristicaController extends Controller
 
                  DB::rollBack();
 
-                return redirect("/domo/caracteristicas")->with('status', $e->getMessage()); 
+                return redirect("/domo/caracteristicas")->with('status', $e->getMessage());
 
         }
 
@@ -62,7 +62,7 @@ class DomoCaracteristicaController extends Controller
             ->where("domo_caracteristica.domo_id", $id)
             ->get();
         }
-        
+
         $domos = Domo::select("domo.*")->get(); */
 
     }
@@ -78,7 +78,7 @@ class DomoCaracteristicaController extends Controller
             ->where("domo_caracteristica.domo_id", $id)
             ->get();
         }
-        
+
         $domos = Domo::select("domo.*")->get();
 
         return view("domocaracteristica.show", compact('domos', 'caracteristicas'));
@@ -96,7 +96,7 @@ class DomoCaracteristicaController extends Controller
 
         ]);
         $domo->update($campos);
-    
+
         return redirect('domocaracteristica.index')->with('mensaje', 'Domo actualizado');
     } */
 }

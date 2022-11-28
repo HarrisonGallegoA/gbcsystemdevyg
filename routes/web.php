@@ -2,14 +2,14 @@
 
 
 use Illuminate\Support\Facades\Route;
-/* use App\Http\Controllers\DomosController; */
+use App\Http\Controllers\DomosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\PlanServicioController;
 use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\DomoCaracteristicaController;
 use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\ReservaDetalleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +90,8 @@ Route::post('agenda/agregar', [AgendaController::class, 'store'])->name('agregar
 
 
 //rutas Reserva
-Route::get('reserva', [ReservaController::class, 'index'])->name('Reserva');
+Route::get('/reserva/servicios', [ReservaDetalleController::class, 'index'])->name('reservadetalleindex');
+Route::post('/reserva/guardar', [ReservaDetalleController::class, 'save'])->name('reservadetalleguardar');
+Route::get('/reserva/listar', [ReservaDetalleController::class, 'show'])->name('reservadetallelistar');
 });
 

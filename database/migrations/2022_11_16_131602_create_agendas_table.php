@@ -17,9 +17,9 @@ return new class extends Migration
                 $table->increments('id');
                 $table->date('fechainicio');
                 $table->date('fechafinal');
-                $table->date('horainicio');
-                $table->date('horafinal');
-             
+                $table->time('horainicio');
+                $table->time('horafinal');
+
                 $table->unsignedInteger('idDomo');
                 $table->timestamps();
                 $table->foreign('idDomo')->references("id")->on("domo");

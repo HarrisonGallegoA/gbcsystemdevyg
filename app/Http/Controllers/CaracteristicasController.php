@@ -1,4 +1,4 @@
-<?sphp
+<?php
 
 namespace App\Http\Controllers;
 
@@ -51,3 +51,5 @@ class CaracteristicasController extends Controller
         return redirect('caracteristicas')->with('mensaje', 'Caracteristica eliminada');
     } */
 }
+
+

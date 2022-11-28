@@ -10,7 +10,7 @@
 
 
  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-info me-md-2" href="{{ route('Reserva')}}"><i class="bi bi-calendar2-plus"></i>
+        <a class="btn btn-info me-md-2" href="{{ route('reservadetalleindex')}}"><i class="bi bi-calendar2-plus"></i>
             Nueva reserva</a>
     </div>
 </div>
@@ -37,7 +37,7 @@
                     </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('agregarAgenda')}}" method="GET" action="" id="formularioAgenda" name="formularioAgenda">
+                <form action="{{-- {{route('agregarAgenda')}} --}}" method="GET" action="" id="formularioAgenda" name="formularioAgenda">
 
             {!! csrf_field() !!}{{-- <i class="fas fa-caret-square-up    "></i> --}}
 
@@ -49,7 +49,7 @@
                   <small id="helpId" class="form-text text-muted"></small>
                 </div> --}}
 
-             
+
                 <div class="form-group">
                         <label for="idDomo">Domo</label>
 
