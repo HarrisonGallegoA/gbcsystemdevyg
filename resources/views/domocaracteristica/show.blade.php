@@ -64,9 +64,8 @@
                         </td>
 
                         <td>
-                            <a href="#editarDomoCaracteristica{{$value->id}}" data-toggle="modal"
-                                data-target="#editarDomoCaracteristica{{$value->id}}"><i
-                                class="fas fa-user-edit fa-lg"></i>
+                            <a class="btn btn-warning" href="#editarDomoCaracteristica{{$value->id}}" data-toggle="modal"
+                                data-target="#editarDomoCaracteristica{{$value->id}}"><i class="fa-sharp fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                     </tr>
@@ -180,7 +179,8 @@
 <script>
     Swal.fire({
   icon: 'success',
-  title: 'Se guardo el Domo',
+  title: 'Perfecto!',
+  text: 'El domo se guardo correctamente!',
   showConfirmButton: false,
   timer: 2500
 

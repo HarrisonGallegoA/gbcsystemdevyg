@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w_YvQx_muSCC1uQemsLUdV3-XOTaKAiJgw&usqp=CAU">
 
     <title>GBCSystem - Administrador</title>
 
@@ -243,10 +244,13 @@
                                     Configuración
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                    @csrf
+                                <a class="dropdown-item" href="{{ route('logout') }}" >{{-- data-toggle="modal" data-target="#logoutModal" --}}
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Salir
+                                    {{ __('Log Out') }}
                                 </a>
+                            </form>
                             </div>
                         </li>
 
@@ -333,6 +337,42 @@
     <script src="{{asset('asset/js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins datatable-->
+
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "order": [
+                    [0, "asc"]
+                ],
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay datos",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+                    "infoFiltered": "(Filtro de _MAX_ total registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron coincidencias",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": Activar orden de columna ascendente",
+                        "sortDescending": ": Activar orden de columna descendente"
+                    }
+                }
+            });
+        });
+    </script>
+
+
     <script src="{{asset('asset/vendor/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
@@ -341,6 +381,8 @@
 
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js"></script>
+
+    
 
     <!--jquery-->
 

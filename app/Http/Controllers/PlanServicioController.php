@@ -12,8 +12,8 @@ use DB;
 class PlanServicioController extends Controller
 {
     public function index(){
-        $servicios = Servicio::all(); 
-        $domos = Domo::all(); 
+        $servicios = Servicio::where('estado', 1)->get(); 
+        $domos = Domo::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
         return view('planservicios.index', compact('servicios','domos')); 
     }
