@@ -147,11 +147,11 @@
                            {{--  </form> --}}
                            <td>
                             @if($domo->estado == 1)
-                            
+
                             <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
-                            
+
                             @elseif ($domo->estado == 2)
-                            
+
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif</td>
                         <td>
@@ -340,11 +340,11 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                
+
             }
         })
-    });    
-    
+    });
+
 </script>
 
 @if (session('mensaje')=="Domo eliminado")

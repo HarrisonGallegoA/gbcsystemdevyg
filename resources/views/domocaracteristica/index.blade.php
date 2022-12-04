@@ -135,9 +135,9 @@
                     let caracteristica_text = $("#caracteristicas option:selected").text();
                     let cantidad = $("#cantidad").val();
                     let existe = caracteristicasD.includes(caracteristica_id)
-                                        
+
                     if(cantidad > 0){
-                        
+
                         if (existe) {
 
                             Swal.fire({
@@ -150,7 +150,7 @@
 
                         } else {
                             caracteristicasD.push(caracteristica_id)
-                            console.log(caracteristicasD); 
+                            console.log(caracteristicasD);
                             $("#tblCaracteristicas").append(`
                             <tr id="tr-${caracteristica_id}">
                                 <td>
@@ -164,7 +164,7 @@
                                 </td>
                             <tr>
                         `);
-                        }   
+                        }
 
                     }else{
                         Swal.fire({
@@ -174,7 +174,7 @@
                             showConfirmButton: false,
                             timer: 1500
                         })
-                    }  
+                    }
                 }
 
                 function eliminar_caracteristica(id){
@@ -183,7 +183,7 @@
                         caracteristicasD.splice(index, 1);
                         $("#tr-" + id).remove();
                     }
-                     console.log("Nuevo araray",caracteristicasD); 
+                     console.log("Nuevo araray",caracteristicasD);
 
                     // console.warn(id);
                     // console.log(caracteristicasD);

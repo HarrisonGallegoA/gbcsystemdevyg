@@ -93,5 +93,12 @@ Route::post('agenda/agregar', [AgendaController::class, 'store'])->name('agregar
 Route::get('/reserva/servicios', [ReservaDetalleController::class, 'index'])->name('reservadetalleindex');
 Route::post('/reserva/guardar', [ReservaDetalleController::class, 'save'])->name('reservadetalleguardar');
 Route::get('/reserva/listar', [ReservaDetalleController::class, 'show'])->name('reservadetallelistar');
+
+Route::controller(ReservaDetalleController::class)->group(
+    function () {
+        Route::get('reserva/editar/{id}', 'edit');
+        Route::put('reserva/actualizar/{id}', 'update');
+    }
+);
 });
 

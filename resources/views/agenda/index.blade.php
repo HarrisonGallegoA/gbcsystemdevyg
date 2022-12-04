@@ -9,17 +9,19 @@
 
 
 
- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-info me-md-2" href="{{ route('reservadetalleindex')}}"><i class="bi bi-calendar2-plus"></i>
-            Nueva reserva</a>
-    </div>
-</div>
 
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a class="btn btn-info me-md-2" href="{{ route('reservadetalleindex')}}"><i class="bi bi-calendar-week-fill"></i>
+        Nueva reserva</a>
+</div>
 <br>
 <div class="container">
     <div id="agenda">
     </div>
 </div>
+
+
+
 
 {{-- <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalagenda">
@@ -31,13 +33,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Agenda</h5>
+                <h5 class="modal-title">Crear Agenda</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
             <div class="modal-body">
-                <form action="{{-- {{route('agregarAgenda')}} --}}" method="GET" action="" id="formularioAgenda" name="formularioAgenda">
+                <form action="" method="GET" action="" id="formularioAgenda" name="formularioAgenda">
 
             {!! csrf_field() !!}{{-- <i class="fas fa-caret-square-up    "></i> --}}
 
@@ -74,7 +76,7 @@
                             <label for="horainicio">Hora Inicio</label>
                                 <input type="time" class="form-control" name="horainicio" id="horainicio"
                                  placeholder=" Ingrese la hora"  value="{{old('horainicio')}}">
-                                <small id="helpId" class="form-text text-muted">Hora Inicio</small>
+
                                 <small class="text-danger">{{$errors->first('horainicio')}}</small>
                             </div>
 
@@ -93,14 +95,11 @@
                                 <input type="time" class="form-control" name="horafinal" id="horafinal" aria-describedby="helpId" placeholder="">
                                 <small class="text-danger">{{$errors->first('horafinal')}}</small>
                             </div>
-                           {{--  <div class="form-group col-md-12">
-                                <label for="estado">Estado</label>
-                                <select class="form-control" name="estado" id="estado">
-                                    <option value="1">Activo</option>
-                                    <option value="2">Inactivo</option>
-                                </select>
-
-                            </div> --}}
+                          {{--   <div class="form-group col-md-12">
+                                <label for="color">Color</label>
+                                    <input class="form-control" id="color" type="color" name="color">
+                                    <label for="color" class="form-label"></label>
+                                </div> --}}
 
                             </form>
             </div>
@@ -108,7 +107,7 @@
                <div class="modal-footer">
                <button type="button" class="btn btn-success"id="btnGuardar">Guardar</button>
                <button type="button" class="btn btn-warning"id="btnModificar" disabled>Modificar</button>
-               <button type="button" class="btn btn-danger"id="btnEliminar" disabled>Eliminar</button>
+              {{--  <button type="button" class="btn btn-danger"id="btnEliminar" disabled>Eliminar</button> --}}
                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
             </div>

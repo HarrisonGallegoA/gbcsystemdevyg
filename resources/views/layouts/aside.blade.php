@@ -88,8 +88,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Reservas</h6>
+
                         <a class="collapse-item" href="{{ route('Agenda')}}">Agenda</a>
-                        <a class="collapse-item" href="{{ route('reservadetalleindex')}}">Reserva</a>
+                        <a class="collapse-item" href="{{ route('reservadetallelistar')}}">Reserva</a>
                     </div>
                 </div>
             </li>

@@ -1,6 +1,4 @@
-// const { result } = require("lodash")
 
-// const { default: axios } = require("axios");
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -12,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
         headerToolbar: {
             left: 'prev,next,today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
+
         },
 
 
@@ -22,9 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var actual = new Date();
             if(info.date >= actual){
-             /*  info.dayEl.style.backgroundColor = ''; */
-             /*  $("#ModalAgenda").modal(); */
-              /* document.getElementById("dia").innerHTML= info.dateStr; */
             }else{
                 Swal.fire({
                     icon: 'error',
@@ -41,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#btnEliminar").attr('disabled', true);
         },
         eventClick: function (info) {
-        /*     formulario.reset(); */
+          /*  formulario.reset(); */
 
             var agenda = info.event;
             axios.get("http://127.0.0.1:8000/agenda/mostrar/" + agenda.id)
@@ -56,8 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         $('#fechafinal').val(data.fechafinal);
                         $('#horafinal').val(data.horafinal);
                         $('#idDomo').val(data.domo.id);
+                        /* $('#color').val(data.color); */
                         $('#idAgenda').val(data.id);
-                        // $('#idDomo').text(data.domo.nombre);
+
+
+                       /*  $('#idDomo').text(data.domo.nombre); */
                     }
                 }).catch();
         }
@@ -72,13 +71,16 @@ document.addEventListener('DOMContentLoaded', function () {
             var horainicio = $('#horainicio').val();
             var fechafinal = $('#fechafinal').val();
             var horafinal = $('#horafinal').val();
+   /*          var color = $('#color').val(); */
+
 
             const datos = {
                 idDomo: idDomo,
                 fechainicio: fechainicio,
                 horainicio: horainicio,
                 fechafinal: fechafinal,
-                horafinal: horafinal
+                horafinal: horafinal,
+               /*  color: color */
             };
             axios.post('http://127.0.0.1:8000/agenda/editar/' + id, datos)
                 .then(data => {
@@ -105,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
-    $("#btnEliminar").click((e) => {
+  /*   $("#btnEliminar").click((e) => {
         if ($('#idAgenda').val() != "") {
             var id = $('#idAgenda').val();
             Swal.fire({
@@ -131,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
 
         }
-    });
+    }); */
 
     document.getElementById("btnGuardar").addEventListener("click", function () {
 
@@ -140,12 +142,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var horainicio = $('#horainicio').val();
         var fechafinal = $('#fechafinal').val();
         var horafinal = $('#horafinal').val();
+       /*  var color = $('#color').val(); */
+
         const datos = {
             idDomo: idDomo,
             fechainicio: fechainicio,
             horainicio: horainicio,
             fechafinal: fechafinal,
-            horafinal: horafinal
+            horafinal: horafinal,
+         /*    color: color */
         };
         console.log(datos);
 
@@ -168,13 +173,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 error => {
                     if (error.response) {
                         console.log(error.response.data);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            text: error.response.data.error,
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
+                        Swal.fire(
+                            'Aviso',
+                            'Todos los campos son requeridos',
+                            'warning'
+
+
+                        );
                     }
                 }
             )

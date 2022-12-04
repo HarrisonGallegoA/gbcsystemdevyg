@@ -35,8 +35,8 @@ class AgendaController extends Controller
         $idDomo = $request->idDomo;
         $fechai = $request->fechainicio;
         $fechaf = $request->fechafinal;
-        $found = Agenda::whereDate('fechainicio', ">=", $fechai,)
-        ->whereDate("fechafinal","<=", $fechaf,)
+        $found = Agenda::whereDate('fechainicio', ">=", $fechai)
+        ->whereDate("fechafinal","<=", $fechaf)
 
         ->where('idDomo', $idDomo)->first();
 
@@ -44,6 +44,8 @@ class AgendaController extends Controller
         if ($found) {
             return response()->json(["error" => "Ya existe una agenda con las mismas fechas."], 403);
         }
+
+
 
         request()->validate([
             'idDomo' => 'required|numeric',
