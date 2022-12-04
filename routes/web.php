@@ -69,7 +69,15 @@ Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])-
 Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
 Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
 Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
- Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar');
+// Route::get('/domo/edit', [DomoCaracteristicaController::class, 'edit'])->name('domocaracteristicaedit');
+// Route::resource('domocaracteristica/edit', DomoCaracteristicaController::class)->names('domocaracteristica');
+
+Route::controller(DomoCaracteristicaController::class)->group(
+    function () {
+        Route::get('domo/editar/{id}', 'edit');
+        Route::put('domo/actualizar/{id}', 'update');
+    }
+);
 
 
 

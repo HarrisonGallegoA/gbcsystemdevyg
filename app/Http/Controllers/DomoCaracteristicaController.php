@@ -12,6 +12,7 @@ class DomoCaracteristicaController extends Controller
 {
     public function index(){
         $caracteristicas = Caracteristica::where('estado', 1)->get();
+        $domos = Domo::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
         return view('domocaracteristica.index', compact('caracteristicas'));
     }
@@ -84,21 +85,53 @@ class DomoCaracteristicaController extends Controller
         return view("domocaracteristica.show", compact('domos', 'caracteristicas'));
     }
 
-    /* public function actualizar(Domo $domo){
 
-        $campos=request()->validate([
-            'nombredomo'=>'required|min:3',
-            'descripcion'=>'required',
-            'tipodomo'=>'required',
-            'capacidad'=>'required',
-            'numerobaños'=>'required',
-            'estado'=>'required'
+    public function edit($id)
+    {
+        //muestra los datos en un formulario
 
-        ]);
-        $domo->update($campos);
+        // $caracteristicas = Caracteristica::find($id);
+        $domos = Domo::find($id);
 
-        return redirect('domocaracteristica.index')->with('mensaje', 'Domo actualizado');
-    } */
+        return view("domocaracteristica.edit", compact('domos'));
+    }
+
+
+
+    public function update(Request $request,  $id)
+    {
+        //actuliza los datos en la abase de datos
+        $domos =  Domo::find($id);
+        $domos->nombre = $request->post('nombre');
+        $domos->descripcion = $request->post('descripcion');
+        $domos->capacidad = $request->post('capacidad');
+        $domos->numerobaños = $request->post('numerobaños');
+        $domos->tipodomo = $request->post('tipodomo');
+        $domos->estado = $request->post('estado');
+        $domos->save();
+
+
+        return redirect("domo/listar")->with('status', '2');
+    }
+
+
+    // public function update(Request $request, Domo $id)
+    // {
+    //     $request->validate([
+    //         'nombre'=> 'required',
+    //         'descripcion'=> 'required',
+    //         'capacidad'=> 'required',
+    //         'numerobaños'=> 'required',
+    //         'tipodomo'=> 'required',
+    //         'estado' => 'required',
+    //     ]);
+
+    //     $domo->update($request->all());
+
+    //     return redirect()->route('domocaracteristica.index', $domo)->with('info', 'el domo Se actualizo con exito');
+    // }
+
+
 }
 
 
