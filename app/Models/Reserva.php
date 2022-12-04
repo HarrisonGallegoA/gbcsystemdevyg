@@ -10,7 +10,7 @@ class Reserva extends Model
     use HasFactory;
     protected $table = 'reserva';
 
-    protected $fillable = ['fechareserva', 'fechainicio','fechafinal','fechapagoparcial' ,'totalservicio','pagoparcial', 'totalpagoparcial','estado', 'domo_id','id_plan','user_id',];
+    protected $fillable = ['user_id', 'id_plan','domo_id','pagoparcial' ,'totalpagoparcial','fechareserva', 'fechainicio','fechafinal','fechapagoparcial','totalservicio','estado'];
 
     public $timestamps = false;
 }

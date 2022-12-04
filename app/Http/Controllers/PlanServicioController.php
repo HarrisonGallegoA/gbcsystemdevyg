@@ -7,24 +7,24 @@ use App\Models\Servicio;
 use App\Models\Plan;
 use App\Models\PlanServicio;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class PlanServicioController extends Controller
 {
     public function index(){
-        $servicios = Servicio::where('estado', 1)->get(); 
+        $servicios = Servicio::where('estado', 1)->get();
         $domos = Domo::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
-        return view('planservicios.index', compact('servicios','domos')); 
+        return view('planservicios.index', compact('servicios','domos'));
     }
 
     public function save(Request $request){
 
             $input = $request->all();
-            try{ 
+            try{
                 DB::beginTransaction();
             $plan = Plan::create([
-                
+
                 "nombre"=>$input["nombre"],
                 "descripcion"=>$input["descripcion"],
                 "precioplan"=>$input["precioplan"],
@@ -50,7 +50,7 @@ class PlanServicioController extends Controller
 
                  DB::rollBack();
 
-                return redirect("/plan/servicios")->with('status', $e->getMessage()); 
+                return redirect("/plan/servicios")->with('status', $e->getMessage());
 
         }
 
@@ -66,7 +66,7 @@ class PlanServicioController extends Controller
             ->where("plan_domo_servicio.plan_id", $id)
             ->get();
         }
-        
+
         $planes = Plan::select("plan.*", "domo.nombre as domo")
         ->join("domo", "domo.id", "=", "plan.domo_id")
         ->get();

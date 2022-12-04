@@ -92,11 +92,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <form action="{{route('domocaracteristicaactualizar', $value)}}" method="post">
                     <div class="modal-body">
                         @csrf @method('PUT')
-
                         <div class="form-group">
                             <label for="nombre">Nombre Domo</label>
                             <input type="text" class="form-control" name="nombre" id="nombredomo"
@@ -115,7 +113,6 @@
                             <textarea class="form-control" name="descripcion" id="descripcion"
                                 rows="2">{{old('descripcion', $value->descripcion)}}</textarea>
                             <small class="text-danger">{{$errors->first('descripcion')}}</small>
-
                         </div>
                         <div class="form-group">
                             <label for="tipodomo">Tipo Domo</label>
@@ -123,7 +120,6 @@
                                 placeholder="ingrese el tipo del domo" value="{{old('tipodomo', $value->tipodomo)}}">
                             <small class="text-danger">{{$errors->first('tipodomo')}}</small>
                         </div>
-
                         <div class="form-group">
                             <label for="numerobaños">numero baños</label>
                             <input type="number" class="form-control" id="numerobaños" name="numerobaños"
@@ -187,7 +183,6 @@
                     text: 'El domo se guardo correctamente!',
                     showConfirmButton: false,
                     timer: 2500
-
                 })
             </script>
         @endif
@@ -202,12 +197,9 @@
                     text: 'El domo se actualizo correctamente!',
                     showConfirmButton: false,
                     timer: 2500
-
                 })
             </script>
         @endif
     @endif
 
 @endsection
-
-

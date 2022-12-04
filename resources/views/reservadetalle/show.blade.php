@@ -2,7 +2,7 @@
 @section('aside_menu')
 @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Lista Planes')
+@section('titulo_ventana', 'Lista Reserva')
 
 @section('Contenido_app')
 
@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col">
         <div class="col-sm-8 col-sm-offset-2">
-            <a class="btn btn-info col-3" href="/reserva/listar"><i class="fa-solid fa-igloo"></i>
+            <a class="btn btn-info col-3" href="/reserva/servicios"><i class="fa-solid fa-igloo"></i>
                 Agregar
                 reserva</a>
         </div>
@@ -27,57 +27,53 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>pagoparcial</th>
-                        <th>pagoparcial</th>
-                        <th>fechareserva </th>
-                        <th>fechainicio</th>
-                        <th>fechafinal</th>
-                        <th>fechapagoparcial</th>
-                        <th>Totalservicios</th>
-                        <th>Domo </th>
+                        <th>Usuario</th>
+                        <th>Pago Parcial</th>
+                        <th>Total Pago Parcial</th>
+                        <th>Fecha Reserva </th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Final</th>
+                        <th>Fecha Pago Parcial</th>
+                        <th>Total Servicio</th>
+                        <th>Domo</th>
+                        <th>Plan</th>
                         <th>Estado</th>
                         <th>Servicios</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($planes as $value)
+                    @foreach($reserva as $value)
                     <tr>
-                        <td>{{ $value->id }}</td>
+                        <th scope="row">{{$value->id}}</th>
+                        <td>{{ $value->users}}</td>
                         <td>{{ $value->pagoparcial }}</td>
-                        <td>{{ $value->pagoparcial }}</td>
+                        <td>{{ $value->totalpagoparcial }}</td>
                         <td>{{ $value->fechareserva }}</td>
                         <td>{{ $value->fechainicio }}</td>
                         <td>{{ $value->fechafinal }}</td>
                         <td>{{ $value->fechapagoparcial }}</td>
-                        <td>{{ $value->totalservicios }}</td>
-                        <td>{{ $value->domo }}</td>
-                        <td>{{ $value->estado }}</td>
-                        <td>{{ $value->servicios }}</td>
-
-
-
-
+                        <td>{{ $value->totalservicio}}</td>
+                        <td>{{ $value->domo}}</td>
+                        <td>{{ $value->plan}}</td>
                         <td>
                             @if($value->estado == 1)
-
                             <button class="btn btn-success col-9"><i
                                     class="fa-sharp fa-solid fa-power-off"></i></button>
-
                             @elseif ($value->estado == 2)
-
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-info col-10" href="/plan/listar?id={{$value->id}}"><i class="fa-solid fa-eye">
+                            <a class="btn btn-info col-10" href="/reserva/listar?id={{$value->id}}"><i class="fa-solid fa-eye">
                             </a></i>
                         </td>
                         <td>
-
-                            <a class="btn btn-warning col-9"><i class="fa-sharp fa-solid fa-pen-to-square"></i>
-                            </a>
-
+                           <form action="{{ url('reserva/editar', $value->id) }}" method="GET">
+                                        <button class="btn btn-warning btn-xs">
+                                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                    </form>
                         </td>
                     </tr>
                     @endforeach
@@ -86,12 +82,7 @@
         </div>
     </div>
 </div>
-
-
-
 <!-- Button trigger modal -->
-
-
 <!-- Modal -->
  {{-- <div class="modal fade" id="servicios{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -149,15 +140,15 @@
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead class="thead-dark">
-                    </tr>
-                    <t>
+                    <tr>
                         <th>Nombre</th>
                         <th>Descripcion</th>
                         <th>Precio</th>
                         <th>Tiempo</th>
-                        </tr>
+
                 </thead>
                 <tbody>
+
                     @foreach($servicios as $value)
                     <tr>
                         <td>{{$value->nombre}}</td>
@@ -184,13 +175,25 @@
     Swal.fire({
   icon: 'success',
   title: 'Perfecto!',
-  text: 'Plan guardado',
+  text: 'Reserva guardado',
   showConfirmButton: false,
   timer: 2500
 
 })
 </script>
 @endif
+@if(session('status')== "2")
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Perfecto!',
+        text: 'Reserva actualizada',
+        showConfirmButton: false,
+        timer: 2500
+    })
+</script>
 @endif
+@endif
+
 
 @endsection
