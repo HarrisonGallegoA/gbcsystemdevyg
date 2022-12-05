@@ -70,13 +70,13 @@
                     {{ __('Your email address is unverified.') }}
 
                     <button type="button" class="underline text-sm text-gray-600 hover:text-gray-900" wire:click.prevent="sendEmailVerification">
-                        {{ __('Click here to re-send the verification email.') }}
+                        {{ __('Haga clic aquí para volver a enviar el correo electrónico de verificación.') }}
                     </button>
                 </p>
 
                 @if ($this->verificationLinkSent)
                     <p v-show="verificationLinkSent" class="mt-2 font-medium text-sm text-green-600">
-                        {{ __('A new verification link has been sent to your email address.') }}
+                        {{ __('Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.') }}
                     </p>
                 @endif
             @endif
@@ -85,11 +85,11 @@
 
     <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
+            {{ __('Guardado.') }}
         </x-jet-action-message>
 
         <x-jet-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>

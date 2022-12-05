@@ -17,12 +17,13 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('asset/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <!--Datatable-->
     <link href="{{asset('asset/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
+    
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -246,7 +247,7 @@
                                 <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
-                                <a class="dropdown-item" href="{{ route('logout') }}" >{{-- data-toggle="modal" data-target="#logoutModal" --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}"  data-toggle="modal" data-target="#logoutModal" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     {{ __('Log Out') }}
                                 </a>
@@ -307,17 +308,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" >
                         @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
                 </div>
             </div>
         </div>
