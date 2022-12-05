@@ -58,10 +58,12 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="tipodomo">Tipo domo</label>
-                        <input type="text" class="form-control" id="tipodomo" name="tipodomo"
-                            placeholder="ingrese el tipo de domo" value="{{old('tipodomo')}}">
-                        <small class="text-danger">{{$errors->first('tipodomo')}}</small>
+                        <label for="tipodomo">tipodomo</label>
+                        <select class="form-control" name="tipodomo" id="tipodomo">
+                            <option value="1">Domo Familiar</option>
+                            <option value="2">Domo Pareja</option>
+                        </select>
+
                     </div>
 
                     <div class="form-group">
@@ -82,6 +84,7 @@
                         </select>
 
                     </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -147,11 +150,11 @@
                            {{--  </form> --}}
                            <td>
                             @if($domo->estado == 1)
-                            
+
                             <button class="btn btn-success col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
-                            
+
                             @elseif ($domo->estado == 2)
-                            
+
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif</td>
                         <td>
@@ -221,6 +224,7 @@
                                 value="{{old('caracteristica', $domo->caracteristicaDomo->nombre)}}" disabled>
                             <small class="text-danger">{{$errors->first('correo')}}</small>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -340,11 +344,11 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 this.submit();
-                
+
             }
         })
-    });    
-    
+    });
+
 </script>
 
 @if (session('mensaje')=="Domo eliminado")

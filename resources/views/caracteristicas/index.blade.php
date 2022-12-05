@@ -2,7 +2,7 @@
 @section('aside_menu')
 @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Caracteristicas')
+@section('titulo_ventana', 'Características')
 
 @section('Contenido_app')
 
@@ -10,7 +10,7 @@
     <div class="col-sm-8 col-sm-offset-2">
         <a class="btn btn-info col-3" data-toggle="modal" data-target="#crearCaracteristica"><i
                 class="fa-solid fa-boxes-stacked"></i> Nueva
-            Caracteristica</a>
+            Característica</a>
     </div>
 </div>
 
@@ -74,7 +74,7 @@
         </div>
     </div>
 </div>
-<!-- FIN Modal CREAR Domo-->
+<!-- FIN Modal CREAR Caracteristica-->
 
 <br>
 <!--@if (session('mensaje'))
@@ -114,7 +114,7 @@
 
                             <button class="btn btn-danger col-9"><i class="fa-sharp fa-solid fa-power-off"></i></button>
                             @endif
-                        </td>   
+                        </td>
                         <td>
 
                           {{--   <form action="{{route('caracteristicaEliminar', $caracteristica)}}" method="post"
@@ -241,6 +241,7 @@
                                 rows="2">{{old('detalle', $caracteristica->detalle)}}</textarea>
                             <small class="text-danger">{{$errors->first('detalle')}}</small>
                         </div>
+
                         <div class="form-group">
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado">
