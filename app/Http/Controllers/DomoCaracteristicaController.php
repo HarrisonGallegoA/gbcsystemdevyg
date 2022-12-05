@@ -37,11 +37,11 @@ class DomoCaracteristicaController extends Controller
                     "domo_id"=>$domo->id,
                     "cantidad"=>$input["cantidades"][$key]
                 ]);
-
+                
                 $ins = Caracteristica::find($value);
                 /*  if($input["cantidades"] <= "cantidad"->$ins->cantidad)  */
                 $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]); 
-                 
+                                
             }
 
                 DB::commit();
@@ -99,6 +99,9 @@ class DomoCaracteristicaController extends Controller
     
         return redirect('domocaracteristica.index')->with('mensaje', 'Domo actualizado');
     } */
+
+
+
 }
 
 

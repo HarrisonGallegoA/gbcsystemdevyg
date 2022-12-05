@@ -327,6 +327,13 @@
     <!-- Custom scripts for all pages-->
     <script src="{{asset('asset/js/sb-admin-2.min.js')}}"></script>
 
+    <!-- Page level plugins -->
+    <script src="{{asset('asset/vendor/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('asset/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('asset/js/demo/chart-pie-demo.js')}}"></script>
+
     <!-- Page level plugins datatable-->
 
     <script>
@@ -372,6 +379,7 @@
 
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js"></script>
+    
 
     
 

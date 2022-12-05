@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nombre', 20)->unique();
             $table->string('descripcion', 100);
             $table->double('precio');
-            $table->datetime('tiempo');
+            $table->time('tiempo');
             $table->integer('estado'); 
             $table->timestamps();
         });

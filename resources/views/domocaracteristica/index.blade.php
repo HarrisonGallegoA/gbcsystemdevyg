@@ -155,7 +155,7 @@
                             <tr id="tr-${caracteristica_id}">
                                 <td>
                                     <input type="hidden" name="caracteristica_id[]" value="${caracteristica_id} "/>
-                                    <input type="hidden" name="cantidades[]" value="${cantidad} "/>
+                                    <input type="hidden" value="${cantidad} "/>
                                     ${caracteristica_text}
                                 </td>
                                 <td>${cantidad}</td>

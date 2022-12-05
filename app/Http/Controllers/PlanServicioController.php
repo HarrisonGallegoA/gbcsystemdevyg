@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Domo;
-use App\Models\Servicio;
-use App\Models\Plan;
-use App\Models\PlanServicio;
-use Illuminate\Http\Request;
 use DB;
+use App\Models\Domo;
+use App\Models\Plan;
+use App\Models\Servicio;
+use App\Models\PlanServicio;
+use Illuminate\Http\Request; 
+use App\Http\Requests\PlanServicioRequest;
 
 class PlanServicioController extends Controller
 {
@@ -18,7 +19,7 @@ class PlanServicioController extends Controller
         return view('planservicios.index', compact('servicios','domos')); 
     }
 
-    public function save(Request $request){
+    public function save(PlanServicioRequest $request){
 
             $input = $request->all();
             try{ 
@@ -72,5 +73,34 @@ class PlanServicioController extends Controller
         ->get();
 
         return view("planservicios.show", compact('planes', 'servicios'));
+    }
+
+    public function edit($id)
+    {
+        //muestra los datos en un formulario
+
+        
+        $planes = Plan::find($id);
+        $domos = Domo::where('estado', 1)->get();
+        return view("planservicios.edit", compact('planes', 'domos'));
+    }
+
+
+
+    public function update(Request $request,  $id)
+    {
+        //actuliza los datos en la base de datos
+        $planes =  Plan::find($id);
+        $planes->nombre = $request->post('nombre');
+        $planes->domo_id = $request->post('domo_id');
+        $planes->descripcion = $request->post('descripcion');
+        $planes->totalservicio = $request->post('totalservicio');
+        $planes->precioplan = $request->post('precioplan');
+        $planes->totalplan = $request->post('totalplan');
+        $planes->estado = $request->post('estado');
+        $planes->save();
+
+
+        return redirect("plan/listar")->with('status', '2');
     }
 }

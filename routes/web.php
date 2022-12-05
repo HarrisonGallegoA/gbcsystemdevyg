@@ -67,7 +67,8 @@ Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])-
 Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
 Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
 Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
- Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar'); 
+Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar'); 
+
 
 
 
@@ -75,6 +76,15 @@ Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name(
 Route::get('/plan/servicios', [PlanServicioController::class, 'index'])->name('planservicioindex');
 Route::post('/plan/guardar', [PlanServicioController::class, 'save'])->name('planservicioguardar');
 Route::get('/plan/listar', [PlanServicioController::class, 'show'])->name('planserviciolistar');
+//actualizar
+Route::controller(PlanServicioController::class)->group(
+    function () {
+        Route::get('plan/editar/{id}', 'edit');
+        Route::put('plan/actualizar/{id}', 'update');
+    }
+);
+
+
 
 });
 

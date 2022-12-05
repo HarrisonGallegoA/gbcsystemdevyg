@@ -37,20 +37,23 @@
                     <div class="form-group col-6">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" placeholder="Ingrese el nombre del domo" name="nombre"
-                            required>
+                            minlength="8" maxlength="20" required>
+                        <small class="text-danger">{{$errors->first('nombre')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="descripcion">Descripción</label>
                         <textarea class="form-control" name="descripcion" placeholder="Ingrese una descripción" rows="2"
-                            required></textarea>
+                           minlength="15" maxlength="60" required></textarea>
+                            <small class="text-danger">{{$errors->first('descripcion')}}</small>
                     </div>
                     <div class="form-group col-6">
-                        <label for="">precio plan</label>
-                        <input type="number" class="form-control" placeholder="Ingrese una la capacidad"
-                            name="precioplan" required>
+                        <label for="precioplan">Precio plan</label>
+                        <input type="number" class="form-control" placeholder="Ingrese el precio"
+                            name="precioplan" min="10000" max="1000000" required>
+                            <small class="text-danger">{{$errors->first('precioplan')}}</small>
                     </div>
                     <div class="form-group col-6">
-                        <label for="    ">Domo</label>
+                        <label for=" ">Domo</label>
                         <select name="domo_id" class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach($domos as $value)
@@ -59,21 +62,25 @@
                         </select>
                     </div>
                     <div class="form-group col-6">
-                        <label for="precioservicio">Total servicios</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
-                            name="totalservicio" required>
+                        <label for="totalservicio">Total servicios</label>
+                        <input type="number" class="form-control" placeholder="Ingrese el precio"
+                            name="totalservicio" min="10000" max="1000000" required>
+                        <small class="text-danger">{{$errors->first('totalservicio')}}</small>
+
                     </div>
                     <div class="form-group col-6">
-                        <label for="">Total</label>
-                        <input type="number" class="form-control" placeholder="Ingrese una la capacidad"
-                            name="totalplan" required>
+                        <label for="totalplan">Total</label>
+                        <input type="number" class="form-control" placeholder="Ingrese el precio"
+                            name="totalplan" min="10000" max="1000000" required>
+                            <small class="text-danger">{{$errors->first('totalplan')}}</small>
+                            
                     </div>
 
-                    <div class="form-group col-6">
+                   {{--  <div class="form-group col-6">
                         <label for="">Total plan</label>
                         <input type="number" class="form-control" placeholder="Total"
-                            name="totalplan" disabled>
-                    </div>
+                            name="totalplan" disabled> 
+                    </div> --}}
                     {{-- <div class="form-group col-6">
                         <label for="">Estado</label>
                         <select name="" id="" class="form-control">

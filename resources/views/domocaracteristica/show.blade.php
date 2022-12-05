@@ -64,8 +64,7 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-warning" href="#editarDomoCaracteristica{{$value->id}}" data-toggle="modal"
-                                data-target="#editarDomoCaracteristica{{$value->id}}"><i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                            <a class="btn btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i>
                             </a>
                         </td>
                     </tr>
