@@ -82,11 +82,12 @@ class PlanServicioController extends Controller
     public function edit($id)
     {
         //muestra los datos en un formulario
-
-        
+        $servicioplan  = PlanServicio::select("plan_domo_servicio.*")
+        ->where("plan_domo_servicio.plan_id", $id)->get();
+        $servicios = Servicio::where('estado', 1)->get(); 
         $planes = Plan::find($id);
         $domos = Domo::where('estado', 1)->get();
-        return view("planservicios.edit", compact('planes', 'domos'));
+        return view("planservicios.edit", compact('planes', 'domos', 'servicios', 'servicioplan'));
     }
 
 
@@ -94,15 +95,27 @@ class PlanServicioController extends Controller
     public function update(Request $request,  $id)
     {
         //actuliza los datos en la base de datos
-        $planes =  Plan::find($id);
-        $planes->nombre = $request->post('nombre');
-        $planes->domo_id = $request->post('domo_id');
-        $planes->descripcion = $request->post('descripcion');
-        $planes->totalservicio = $request->post('totalservicio');
-        $planes->precioplan = $request->post('precioplan');
-        $planes->totalplan = $request->post('totalplan');
-        $planes->estado = $request->post('estado');
-        $planes->save();
+        $plan =  Plan::find($id);
+        $plan->nombre = $request->post('nombre');
+        $plan->domo_id = $request->post('domo_id');
+        $plan->descripcion = $request->post('descripcion');
+        $plan->totalservicio = $request->post('totalservicio');
+        $plan->precioplan = $request->post('precioplan');
+        $plan->totalplan = $request->post('totalplan');
+        $plan->estado = $request->post('estado');
+
+        // dd($request->all());
+        $plan->save();
+        PlanServicio::where('plan_id','=',$plan->id)->delete();
+        foreach($request["servicio_id"] as $key => $value){
+            PlanServicio::create([
+            "servicio_id"=>$value,
+            "plan_id"=>$plan->id,
+        ]);
+
+         /* $ins = Servicio::find($value);
+        $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
+    }
 
 
         return redirect("plan/listar")->with('status', '2');
