@@ -44,7 +44,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         
         $input= $request->all();
@@ -57,6 +57,7 @@ class UserController extends Controller
 
 
        return redirect()->route('ListUser');
+       ;
     }
 
     /**

@@ -12,12 +12,15 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+            @can('dashboard')
+                
+            
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
+            @endcan
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -29,6 +32,8 @@
             <!-- Nav Item - Pages Collapse Menu -->
             
             <!-- Nav Item - Utilities Collapse Menu -->
+            @can('Configuraciones')               
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -50,7 +55,8 @@
                     </div>
                 </div>
             </li>
-
+            @endcan
+            @can('Servicios')
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -66,7 +72,7 @@
                     </div>
                 </div>
             </li>
-
+            @endcan
             <!-- Divider -->
             <!--<hr class="sidebar-divider">-->
 
@@ -94,18 +100,22 @@
                 </div>
             </li>
             <!-- Nav Item - Charts -->
+            @can('Ventas')
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Ventas</span></a>
             </li>
+            @endcan
 
+            @can('Domos')               
+            
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('domocaracteristicalistar') }}">
                     <i class="fa-solid fa-igloo"></i></i>
                     <span>Domos</span></a>
             </li>
-
+            @endcan
             <!-- Nav Item - Tables -->
 
             {{-- <li class="nav-item">
@@ -115,13 +125,15 @@
             </li> --}}
 
 
-
+            @can('Caracteristicas')                    
             <li class="nav-item">
                 <a class="nav-link" href="{{route('caracteristicaIndex') }}">
                     <i class="fa-solid fa-tv"></i>
                     <span>Caracteristicas</span></a>
             </li>
+            @endcan
 
+            
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="bi bi-chat-heart"></i>

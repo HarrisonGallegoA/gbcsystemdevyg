@@ -24,8 +24,11 @@ use App\Http\Controllers\ReservaDetalleController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('portada');
 });
+/*Route::get('/', function () {
+    return view('auth.login');
+});*/
 
 Route::middleware([
     'auth:sanctum',

@@ -3,7 +3,7 @@
 @include('layouts.aside')
 @endsection
 @section('titulo_ventana', 'Usuarios')
-
+<script>import Swal from 'sweetalert2'</script>
 @section('Contenido_app')
 
 
@@ -53,25 +53,21 @@
                         </td>
                         <td> {{ $user->getRoleNames()->first() ? $user->getRoleNames()->first() : 'No asignado' }}</td>
                         <td>
-                            <button class="btn btn-success btn-sm" data-toggle="modal"
+                            <button class="btn btn-warning btn-sm" data-toggle="modal"
                                 data-target="#modalEditar{{$user->id}}"> <i class="bi bi-pencil-fill"></i> </button>
                                  
-                                <form action="{{ route('userDestroy', $user->id) }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                            <button type="submit" class="btn btn-danger btn-sm"> <i class="bi bi-person-x"></i></button>
-
-                            </form>
+                               
                         </td>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="modalEditar{{$user->id}}" tabindex="-1"
-                                aria-labelledby="modalEditar" aria-hidden="true">
-                                <div class="modal-dialog">
+                            
+                                <div class="modal fade" id="modalEditar{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modalUsuario" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">Editar de Usuario</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
@@ -82,7 +78,7 @@
                                                     <label for="exampleFormControlInput1">Documento</label>
                                                     <input type="number" value="{{ old('document', $user->document) }}"
                                                         class="form-control" id="exampleFormControlInput1"
-                                                        name="document">
+                                                        name="document" >
                                                 </div>
 
                                                 <div class="form-group">
@@ -161,54 +157,68 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="modalUsuario" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="modalUsuario" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
+            <div class="modal-header"> 
+                <h5 class="modal-title" id="exampleModalLabel">Crear Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form action="{{ route('user.store', $user) }}" method="POST">
+
+            <form action="{{ route('user.store', $user) }}" method="POST">
+                <div class="modal-body">
                     @csrf
+
+                    {{-- @if($errors->any())
+                    @foreach($errors->all() as $error)
+                    <p>{{$error}}</p>
+                    @endforeach
+                    @endif --}}
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Documento</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" name="document" value="{{old('document', $user->document)}}">
+                        <label for="documento">Documento</label>
+                        <input type="number"class="form-control" name="document" id="document"
+                            placeholder="Ingrese el documento del usuario" required>{{old('document')}}
                         <small class="text-danger">{{$errors->first('document')}}</small>
                     </div>
-
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Nombre</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="name" value="{{old('name', $user->name)}}">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="name" id="name"
+                            placeholder="Ingrese el nombre del usuario" value="{{old('name')}}"  minlength="5"  maxlength="20" required>
                         <small class="text-danger">{{$errors->first('name')}}</small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Apellido</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="lastName" value="{{old('lastName', $user->lastName)}}">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="lastName"
+                        placeholder="Ingrese el apellido del usuario" value="{{old('lastname')}}"  minlength="5"  maxlength="20" required>
                         <small class="text-danger">{{$errors->first('lastName')}}</small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Dirección</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="address" value="{{old('address', $user->address)}}">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="address"
+                        placeholder="Ingrese la dirección del usuario" value="{{old('address')}}"  minlength="5"  maxlength="20" required> 
                         <small class="text-danger">{{$errors->first('address')}}</small>
 
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Teléfono</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" name="phone" value="{{old('phone', $user->phone)}}">
+                        <label for="telefono">Teléfono</label>
+                        <input type="number" class="form-control" id="telefono" name="phone" 
+                        placeholder="Ingrese el telefono del usuario" value="{{old('nombre')}}"  minlength="5"  maxlength="20" required>
                         <small class="text-danger">{{$errors->first('phone')}}</small>
 
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Correo</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" name="email" value="{{old('email', $user->email)}}">
+                        <label for="correo">Correo</label>
+                        <input type="email" class="form-control" id="correo" name="email"
+                        placeholder="Ingrese el correo del usuario" value="{{old('email')}}"  minlength="5"  maxlength="20" required> 
                         <small class="text-danger">{{$errors->first('email')}}</small>
 
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Contraseña</label>
-                        <input type="password" class="form-control" id="exampleFormControlInput1" name="password" value="{{old('password', $user->password)}}">
+                        <label for="contraseña">Contraseña</label>
+                        <input type="password" class="form-control" id="contraseña" name="password"
+                        placeholder="Ingrese la contraseña del usuario" value="{{old('nombre')}}"  minlength="5"  maxlength="20" required> 
                         <small class="text-danger">{{$errors->first('password')}}</small>
 
                     </div>
@@ -233,11 +243,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
+                
             </div>
         </div>
     </div>
 </div>
-
 
 
 

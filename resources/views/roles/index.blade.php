@@ -21,7 +21,7 @@
                         <th>Id</th>
                         <th>Nombre Rol</th>
                         <th>Acciones</th>
-                        
+                        <th>Estado</th>                      
                         
                     </tr>
                 </thead>
@@ -63,6 +63,13 @@
                                                                 placeholder="Ingresar el nombre del rol"
                                                                 value="{{ old('nombre', $role->name) }}" required>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label for="estado">Estado</label>
+                                                            <select class="form-control" name="status" id="status">
+                                                                <option value="1">Activo</option>
+                                                                <option value="2">Inactivo</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="mb-3">
                                                             @foreach ($permisos as $permiso)
                                                                 
@@ -98,8 +105,13 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#modalUsuario"> <i class="bi bi-x-circle-fill"></i></button> 
+                             
                         </td>
+                        <td>@if($role->status == '2')
+                            <span class="btn btn-danger"><i class="bi bi-toggle-off"></i></span>
+                            @else
+                            <span class="btn btn-success"><i class="bi bi-toggle-on"></i></span>
+                            @endif</th></td>
                     
                     
                             
@@ -133,7 +145,13 @@
                     <label for="exampleFormControlInput1">Nombre Rol</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="nombreRol">
                 </div>
-                
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select class="form-control" name="status" id="status">
+                        <option value="1">Activo</option>
+                        <option value="2">Inactivo</option>
+                    </select>
+                </div>
                 @foreach ($permisos as $permiso)
                 <label>
                     <div class="form-check">

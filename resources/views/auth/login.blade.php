@@ -36,7 +36,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                        <img class="col-lg-6 d-none d-lg-block" src="https://images.adsttc.com/media/images/590b/f637/e58e/cef4/3f00/0563/newsletter/Exterior_Helle_Arensbak_og_Atelier_Kristoffer_Tejlgaard.jpg?1493956133" > 
+                        <img class="col-lg-6 d-none d-lg-block" src="https://imgcy.trivago.com/c_fill,d_dummy.jpeg,e_sharpen:60,f_auto,h_627,q_auto,w_1200/itemimages/11/16/11161960_v1.jpeg" > 
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -90,11 +90,11 @@
                                         </a>
                                     @endif
                                     </div>
-                                    <div class="text-center">
+                                    <!--<div class="text-center">
                                     @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
                                 @endif
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>

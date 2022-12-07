@@ -21,6 +21,34 @@
                     required />
             </div>
 
+            <div class="col-sm-6">
+                                        <label for="name" value="{{ __('lastName') }}"></label>
+                                        <input type="text" class="form-control form-control-user" id="lastName" name="lastName"
+                                            :value="old('lastName')" placeholder="Apellido" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="document" value="{{ __('document') }}"></label>
+                                        <input type="number" class="form-control form-control-user" id="document" name="document"
+                                            :value="old('document')" placeholder="Documento" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <label for="name" value="{{ __('phone') }}"></label>
+                                        <input type="text" class="form-control form-control-user" id="phone" name="phone"
+                                            :value="old('phone')" placeholder="Teléfono" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" value="{{ __('Address') }}"></label>
+                                    <input type="text" class="form-control form-control-user" id="address" name="address"
+                                        placeholder="Dirección" :value="old('address')" required>
+                                </div>
+
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required
@@ -110,21 +138,44 @@
                             <form class="user" method="POST" action="{{ route('register') }}">
                                 @csrf
                                 <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <div class="col-sm-6">
                                         <label for="name" value="{{ __('Name') }}"></label>
                                         <input type="text" class="form-control form-control-user" id="name" name="name"
                                             :value="old('name')" placeholder="Nombre" required autofocus
                                             autocomplete="name">
                                     </div>
-                                    {{-- <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div> --}}
+                                    
+                                    <div class="col-sm-6">
+                                        <label for="name" value="{{ __('lastName') }}"></label>
+                                        <input type="text" class="form-control form-control-user" id="lastName" name="lastName"
+                                            :value="old('lastName')" placeholder="Apellido" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6">
+                                        <label for="document" value="{{ __('document') }}"></label>
+                                        <input type="number" class="form-control form-control-user" id="document" name="document"
+                                            :value="old('document')" placeholder="Documento" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <label for="name" value="{{ __('phone') }}"></label>
+                                        <input type="text" class="form-control form-control-user" id="phone" name="phone"
+                                            :value="old('phone')" placeholder="Teléfono" required autofocus
+                                            autocomplete="name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" value="{{ __('Address') }}"></label>
+                                    <input type="text" class="form-control form-control-user" id="address" name="address"
+                                        placeholder="Dirección" :value="old('address')" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email" value="{{ __('Email') }}"></label>
                                     <input type="email" class="form-control form-control-user" id="email" name="email"
-                                        placeholder="Dirección de correo electrónico" :value="old('email')" required>
+                                        placeholder="Correo electrónico" :value="old('email')" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -160,20 +211,19 @@
                                 </div>
                                 @endif
                                 <br>
-                                <button class="btn btn-primary btn-user btn-block">
-                                    {{ __('Register') }}
+                                <button class="btn btn-primary btn-user btn-block"> {{ __('Register') }}
                                 </button>
                                 <hr>
 
                             </form>
 
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="forgot-password.html">¿Has olvidado tu contraseña?</a>
                             </div>
                             <div class="text-center">
                                 <a class="underline text-sm text-gray-600 hover:text-gray-900"
                                     href="{{ route('login') }}">
-                                    {{ __('Already registered?') }}
+                                    {{ __('¿Ya registrado?') }}
                                 </a>
                             </div>
                         </div>
