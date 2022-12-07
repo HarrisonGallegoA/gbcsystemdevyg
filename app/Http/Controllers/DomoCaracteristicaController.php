@@ -6,23 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\Caracteristica;
 use App\Models\Domo;
 use App\Models\DomoCaracteristica;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class DomoCaracteristicaController extends Controller
 {
     public function index(){
         $caracteristicas = Caracteristica::where('estado', 1)->get();
+        $domos = Domo::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
-        return view('domocaracteristica.index', compact('caracteristicas')); 
+        return view('domocaracteristica.index', compact('caracteristicas'));
     }
-    
+
     public function save(Request $request){
 
             $input = $request->all();
-            try{ 
+            try{
                 DB::beginTransaction();
             $domo = Domo::create([
-                
+
                 "nombre"=>$input["nombre"],
                 "descripcion"=>$input["descripcion"],
                 "capacidad"=>$input["capacidad"],
@@ -40,8 +41,8 @@ class DomoCaracteristicaController extends Controller
 
                 $ins = Caracteristica::find($value);
                 /*  if($input["cantidades"] <= "cantidad"->$ins->cantidad)  */
-                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]); 
-                 
+                $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);
+
             }
 
                 DB::commit();
@@ -50,7 +51,7 @@ class DomoCaracteristicaController extends Controller
 
                  DB::rollBack();
 
-                return redirect("/domo/caracteristicas")->with('status', $e->getMessage()); 
+                return redirect("/domo/caracteristicas")->with('status', $e->getMessage());
 
         }
 
@@ -62,7 +63,7 @@ class DomoCaracteristicaController extends Controller
             ->where("domo_caracteristica.domo_id", $id)
             ->get();
         }
-        
+
         $domos = Domo::select("domo.*")->get(); */
 
     }
@@ -78,27 +79,59 @@ class DomoCaracteristicaController extends Controller
             ->where("domo_caracteristica.domo_id", $id)
             ->get();
         }
-        
+
         $domos = Domo::select("domo.*")->get();
 
         return view("domocaracteristica.show", compact('domos', 'caracteristicas'));
     }
 
-    /* public function actualizar(Domo $domo){
 
-        $campos=request()->validate([
-            'nombredomo'=>'required|min:3',
-            'descripcion'=>'required',
-            'tipodomo'=>'required',
-            'capacidad'=>'required',
-            'numerobaños'=>'required',
-            'estado'=>'required'
+    public function edit($id)
+    {
+        //muestra los datos en un formulario
 
-        ]);
-        $domo->update($campos);
-    
-        return redirect('domocaracteristica.index')->with('mensaje', 'Domo actualizado');
-    } */
+        // $caracteristicas = Caracteristica::find($id);
+        $domos = Domo::find($id);
+
+        return view("domocaracteristica.edit", compact('domos'));
+    }
+
+
+
+    public function update(Request $request,  $id)
+    {
+        //actuliza los datos en la abase de datos
+        $domos =  Domo::find($id);
+        $domos->nombre = $request->post('nombre');
+        $domos->descripcion = $request->post('descripcion');
+        $domos->capacidad = $request->post('capacidad');
+        $domos->numerobaños = $request->post('numerobaños');
+        $domos->tipodomo = $request->post('tipodomo');
+        $domos->estado = $request->post('estado');
+        $domos->save();
+
+
+        return redirect("domo/listar")->with('status', '2');
+    }
+
+
+    // public function update(Request $request, Domo $id)
+    // {
+    //     $request->validate([
+    //         'nombre'=> 'required',
+    //         'descripcion'=> 'required',
+    //         'capacidad'=> 'required',
+    //         'numerobaños'=> 'required',
+    //         'tipodomo'=> 'required',
+    //         'estado' => 'required',
+    //     ]);
+
+    //     $domo->update($request->all());
+
+    //     return redirect()->route('domocaracteristica.index', $domo)->with('info', 'el domo Se actualizo con exito');
+    // }
+
+
 }
 
 

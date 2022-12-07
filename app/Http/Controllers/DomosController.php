@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Domo;
+use App\Models\Caracteristica;
 
 class DomosController extends Controller
 {
@@ -13,7 +14,7 @@ class DomosController extends Controller
         return view('Domos.index', compact('domos', 'caracteristicas'));
 
     }
-    
+
     public function guardar(){
 
         $campos=request()->validate([
@@ -23,12 +24,12 @@ class DomosController extends Controller
             'capacidad'=>'required',
             'numerobaños'=>'required',
             'idCaracteristicas'=>'required'
-    
+
         ]);
         Domo::create($campos);
 
-        return redirect('domos')->with('mensaje', 'Domo guardado'); 
-    
+        return redirect('domos')->with('mensaje', 'Domo guardado');
+
     }
 
     public function actualizar(Domo $domo){
@@ -40,10 +41,10 @@ class DomosController extends Controller
             'capacidad'=>'required',
             'numerobaños'=>'required',
             'idCaracteristicas'=>'required'
-    
+
         ]);
         $domo->update($campos);
-    
+
         return redirect('domos')->with('mensaje', 'Domo actualizado');
     }
 
@@ -52,5 +53,5 @@ class DomosController extends Controller
     {
         $domo->delete();
         return redirect('domos')->with('mensaje', 'Domo eliminado');
-    }  */ 
+    }  */
 }

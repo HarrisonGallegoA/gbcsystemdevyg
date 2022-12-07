@@ -35,7 +35,7 @@
                             required></textarea>
                     </div>
                     <div class="form-group col-6">
-                        <label for="">Capapcidad</label>
+                        <label for="">Capacidad</label>
                         <input type="number" class="form-control" placeholder="Ingrese una la capacidad"
                             name="capacidad" required>
                     </div>
@@ -53,18 +53,27 @@
                         <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
                             name="numerobaños" required>
                     </div>
-                    <div class="form-group col-6">
-                        <label for="">Tipo de domo</label>
-                        <input type="text" class="form-control" placeholder="Ingrese el tipo de domo" name="tipodomo"
-                            required>
-                    </div>
-                    {{-- <div class="form-group col-6">
-                        <label for="">Estado</label>
-                        <select name="" id="" class="form-control">
+
+
+                       <div class="form-group">
+                           <label for="tipodomo">tipodomo</label>
+                         <select class="form-control" name="tipodomo" id="tipodomo">
+                            <option value="Familiar">Familiar</option>
+                            <option value="Pareja">Pareja</option>
+                         </select>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="estado">Estado</label>
+                        <select class="form-control" name="estado">
                             <option value="1">Activo</option>
                             <option value="2">Inactivo</option>
                         </select>
-                    </div> --}}
+
+                    </div>
+
+
                 </div>
             </div>
 
@@ -72,7 +81,10 @@
                 <button type="submit" class="btn btn-info btn-block">Guardar</button>
             </div>
 
+
+
         </div>
+
         <div class="col-6">
             <div class="card shadow">
                 <div class="card-header">
@@ -135,9 +147,9 @@
                     let caracteristica_text = $("#caracteristicas option:selected").text();
                     let cantidad = $("#cantidad").val();
                     let existe = caracteristicasD.includes(caracteristica_id)
-                                        
+
                     if(cantidad > 0){
-                        
+
                         if (existe) {
 
                             Swal.fire({
@@ -150,7 +162,7 @@
 
                         } else {
                             caracteristicasD.push(caracteristica_id)
-                            console.log(caracteristicasD); 
+                            console.log(caracteristicasD);
                             $("#tblCaracteristicas").append(`
                             <tr id="tr-${caracteristica_id}">
                                 <td>
@@ -164,7 +176,7 @@
                                 </td>
                             <tr>
                         `);
-                        }   
+                        }
 
                     }else{
                         Swal.fire({
@@ -174,7 +186,7 @@
                             showConfirmButton: false,
                             timer: 1500
                         })
-                    }  
+                    }
                 }
 
                 function eliminar_caracteristica(id){
@@ -183,7 +195,7 @@
                         caracteristicasD.splice(index, 1);
                         $("#tr-" + id).remove();
                     }
-                     console.log("Nuevo araray",caracteristicasD); 
+                     console.log("Nuevo araray",caracteristicasD);
 
                     // console.warn(id);
                     // console.log(caracteristicasD);
