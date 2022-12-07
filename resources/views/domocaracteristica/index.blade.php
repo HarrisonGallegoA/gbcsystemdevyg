@@ -28,16 +28,19 @@
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" placeholder="Ingrese el nombre del domo" name="nombre"
                             required>
+                            <small class="text-danger">{{$errors->first('nombre')}}</small>
                     </div>
                     <div class="form-group col-6">
-                        <label for="capacidad">Descripción</label>
+                        <label for="descripcion">Descripción</label>
                         <textarea class="form-control" name="descripcion" placeholder="Ingrese una descripción" rows="2"
                             required></textarea>
+                            <small class="text-danger">{{$errors->first('descripcion')}}</small>
                     </div>
                     <div class="form-group col-6">
                         <label for="">Capacidad</label>
                         <input type="number" class="form-control" placeholder="Ingrese una la capacidad"
                             name="capacidad" required>
+                            <small class="text-danger">{{$errors->first('capacidad')}}</small>
                     </div>
                     {{-- <div class="form-group col-6">
                         <label for="">Categoria</label>
@@ -52,6 +55,7 @@
                         <label for="numerobaños">Numero de baños</label>
                         <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
                             name="numerobaños" required>
+                            <small class="text-danger">{{$errors->first('numerobaños')}}</small>
                     </div>
 
 
@@ -88,7 +92,7 @@
         <div class="col-6">
             <div class="card shadow">
                 <div class="card-header">
-                    <h5 class="text-center">Añadir Caracteristica</h5>
+                    <h5 class="text-center">Añadir Característica</h5>
                 </div>
                 <div class="row card-body">
                     <div class="col-6">

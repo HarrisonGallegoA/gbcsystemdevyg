@@ -20,7 +20,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Crear Caracteristica</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear Característica</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -37,7 +37,7 @@
                     @endif --}}
 
                     <div class="form-group">
-                        <label for="nombre">Nombre Caracteristica</label>
+                        <label for="nombre">Nombre Característica</label>
                         <input type="text" class="form-control" name="nombre" id="nombre"
                             placeholder="Ingrese el nombre de la caracteristica" value="{{old('nombre')}}">
                         <small class="text-danger">{{$errors->first('nombre')}}</small>
@@ -45,7 +45,7 @@
 
                     <div class="form-group">
                         <label for="detalle">Detalle</label>
-                        <textarea class="form-control" name="detalle" id="detalle"
+                        <textarea class="form-control" name="detalle" id="detalle"  placeholder="Ingrese la Descripción"
                             rows="2">{{old('detalle')}}</textarea>
                         <small class="text-danger">{{$errors->first('detalle')}}</small>
                     </div>
@@ -153,7 +153,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Mostrar Caracteristica</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Mostrar Característica</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -163,7 +163,7 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label for="nombre">Nombre Caracteristica</label>
+                            <label for="nombre">Nombre Característica</label>
                             <input type="text" class="form-control" name="nombre" id="nombre"
                                 placeholder="Ingrese el nombre" value="{{old('nombre', $caracteristica->nombre)}}"
                                 disabled>
@@ -206,7 +206,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar Caracteristica</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Característica</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -224,7 +224,7 @@
 
 
                         <div class="form-group">
-                            <label for="nombre">Nombre Domo</label>
+                            <label for="nombre">Nombre Característica</label>
                             <input type="text" class="form-control" name="nombre" id="nombre"
                                 placeholder="Ingrese el nombre" value="{{old('nombre', $caracteristica->nombre)}}">
                             <small class="text-danger">{{$errors->first('nombre')}}</small>

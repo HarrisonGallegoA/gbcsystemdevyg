@@ -2,7 +2,7 @@
 @section('aside_menu')
     @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Lista Reserva')
+@section('titulo_ventana', 'Lista Ventas')
 
 @section('Contenido_app')
 
@@ -12,9 +12,9 @@
     <div class="row">
         <div class="col">
             <div class="col-sm-8 col-sm-offset-2">
-                <a class="btn btn-info col-3" href="/reserva/servicios"><i class="fa-solid fa-igloo"></i>
+                <a class="btn btn-info col-3" href="/venta/servicios"><i class="fa-solid fa-money-bill-transfer"></i>
                     Agregar
-                    reserva</a>
+                    Venta</a>
             </div>
             <br>
         </div>
@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($reserva as $value)
+                        @foreach ($venta as $value)
                             <tr>
                                 <th scope="row">{{ $value->id }}</th>
                                 <td>{{ $value->users }}</td>
@@ -56,24 +56,20 @@
                                 <td>{{ $value->totalservicio }}</td>
                                 <td>{{ $value->domo }}</td>
                                 <td>{{ $value->plan }}</td>
-
                                 <td>
                                     @if ($value->estado == 1)
-                                        <button class="btn btn-success col-9"><i
-                                                class="fa-sharp fa-solid fa-power-off"></i></button>
+                                        <button class="btn btn-success col-9">Pagada</button>
                                     @elseif ($value->estado == 2)
-                                        <button class="btn btn-danger col-9"><i
-                                                class="fa-sharp fa-solid fa-power-off"></i></button>
+                                        <button class="btn btn-danger col-9">Anulada</i></button>
                                     @endif
                                 </td>
-
                                 <td>
-                                    <a class="btn btn-info col-10" href="/reserva/listar?id={{ $value->id }}"><i
+                                    <a class="btn btn-info col-10" href="/venta/listar?id={{ $value->id }}"><i
                                             class="fa-solid fa-eye">
                                     </a></i>
                                 </td>
                                 <td>
-                                    <form action="{{ url('reserva/editar', $value->id) }}" method="GET">
+                                    <form action="{{ url('venta/editar', $value->id) }}" method="GET">
                                         <button class="btn btn-warning btn-xs">
                                             <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                                         </button>
@@ -135,7 +131,7 @@
             </div>
         </div>
     </div>
-</div>  --}}
+ </div>  --}}
 
 
     @if (count($servicios) > 0)
@@ -144,15 +140,14 @@
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead class="thead-dark">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Precio</th>
-                                <th>Tiempo</th>
-
+                            </tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Tiempo</th>
+                            </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($servicios as $value)
                                 <tr>
                                     <td>{{ $value->nombre }}</td>
@@ -160,7 +155,6 @@
                                     <td>{{ $value->precio }}</td>
                                     <td>{{ $value->tiempo }}</td>
                                 </tr>
-
                             @endforeach
                         </tbody>
                     </table>
@@ -168,6 +162,7 @@
             </div>
         </div>
     @endif
+
 
 @endsection
 
@@ -179,7 +174,7 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Perfecto!',
-                    text: 'Reserva guardado',
+                    text: 'Venta guardado',
                     showConfirmButton: false,
                     timer: 2500
 
@@ -191,7 +186,7 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Perfecto!',
-                    text: 'Reserva actualizada',
+                    text: 'Venta actualizada',
                     showConfirmButton: false,
                     timer: 2500
                 })

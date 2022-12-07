@@ -10,6 +10,8 @@ use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\DomoCaracteristicaController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ReservaDetalleController;
+use App\Http\Controllers\VentasDetalleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +81,17 @@ Route::controller(DomoCaracteristicaController::class)->group(
     }
 );
 
+//rutas venta
+Route::get('/venta/servicios', [VentasDetalleController::class, 'index'])->name('ventadetalleindex');
+Route::post('/venta/guardar', [VentasDetalleController::class, 'save'])->name('ventadetalleguardar');
+Route::get('/venta/listar', [VentasDetalleController::class, 'show'])->name('ventadetallelistar');
 
+Route::controller(VentasDetalleController::class)->group(
+    function () {
+        Route::get('venta/editar/{id}', 'edit');
+        Route::put('venta/actualizar/{id}', 'update');
+    }
+);
 
 //rutas plan
 Route::get('/plan/servicios', [PlanServicioController::class, 'index'])->name('planservicioindex');

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Domo;
 use App\Models\Servicio;
 use App\Models\Plan;
@@ -18,6 +17,7 @@ class ReservaDetalleController extends Controller
         $servicios = Servicio::where('estado', 1)->get();
         $domos = Domo::where('estado', 1)->get();
         $plan = Plan::where('estado', 1)->get();
+
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
         return view('reservadetalle.index', compact('servicios','domos','plan','usuarios',));
     }
@@ -119,6 +119,7 @@ class ReservaDetalleController extends Controller
         $reserva->totalservicio = $request->post('totalservicio');
         $reserva->domo_id = $request->post('domo_id');
         $reserva->id_plan = $request->post('id_plan');
+        $reserva->estado = $request->post('estado');
         $reserva->save();
 
 

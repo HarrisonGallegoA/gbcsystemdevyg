@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DomocaracteristicaRequest;
 use App\Models\Caracteristica;
 use App\Models\Domo;
 use App\Models\DomoCaracteristica;
@@ -17,7 +18,7 @@ class DomoCaracteristicaController extends Controller
         return view('domocaracteristica.index', compact('caracteristicas'));
     }
 
-    public function save(Request $request){
+    public function save(DomocaracteristicaRequest $request){
 
             $input = $request->all();
             try{

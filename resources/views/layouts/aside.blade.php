@@ -95,17 +95,24 @@
                 </div>
             </li>
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            {{-- <li class="nav-item">
+                <a class="nav-link" href="{{ route('ventadetallelistar')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Ventas</span></a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('domocaracteristicalistar') }}">
                     <i class="fa-solid fa-igloo"></i></i>
                     <span>Domos</span></a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('ventadetallelistar') }}">
+                    <i class="fa-solid fa-money-bill-transfer"></i></i>
+                    <span>Ventas</span></a>
+            </li>
+
 
             <!-- Nav Item - Tables -->
 

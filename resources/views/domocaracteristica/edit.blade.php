@@ -16,20 +16,9 @@
 
                 <div class="row card-body">
                     <div class="form-group col-6">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Nombre Domo</label>
                         <input type="text" class="form-control"  name="nombre" value="{{ $domos->nombre }}"
                             required>
-                    </div>
-
-                    <div class="form-group col-6">
-                        <label for="descripcion">Descripción</label>
-                        <input type="text" class="form-control"  name="descripcion" value="{{ $domos->descripcion }}"
-                            required>
-                    </div>
-
-                    <div class="form-group col-6">
-                        <label for="">Capacidad</label>
-                        <input type="number" class="form-control" name="capacidad" value="{{ $domos->capacidad }}"  required>
                     </div>
 
                     <div class="form-group col-6">

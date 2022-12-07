@@ -35,8 +35,8 @@
                     <div class="row card-body">
 
                         <div class="form-group col-6">
-                            <label for="user_id">id</label>
-                            <select name="user_id" id="user_id" class="form-control" required>
+                            <label for="user_id">Usuario</label>
+                            <select name="user_id" id="id" class="form-control" required>
                                 @foreach ($usuarios as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                                 @endforeach
@@ -100,6 +100,19 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select class="form-control" name="estado" id="estado">
+                                <option value="1">Activo</option>
+                                <option value="2">Inactivo</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
 
                     {{-- <div class="form-group col-6">
                         <label for="">Estado</label>

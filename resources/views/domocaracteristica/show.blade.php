@@ -32,7 +32,7 @@
                             <th scope="col">numero de baños</th>
                             <th scope="col">tipo domo</th>
                             <th scope="col">Estado</th>
-                            <th scope="col">Caracteristicas</th>
+                            <th scope="col">Características</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -58,6 +58,7 @@
                                                 class="fa-sharp fa-solid fa-power-off"></i></button>
                                     @endif
                                 </td>
+
                                 <td>
                                     <a class="btn btn-info col-10" href="/domo/listar?id={{ $value->id }}"><i
                                             class="fa-solid fa-eye">
