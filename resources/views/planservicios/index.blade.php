@@ -5,7 +5,7 @@
 @section('titulo_ventana', 'Agregar Plan')
 
 @section('Contenido_app')
-<br>
+<hr>
 <div class="row">
     <div class="col">
         <div class="col-sm-8 col-sm-offset-2">
@@ -63,8 +63,8 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="totalservicio">Total servicios</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el precio"
-                            name="totalservicio" min="10000" max="1000000" required>
+                        <input id="totalservicio" type="number" class="form-control" placeholder="Total"
+                            name="totalservicio" >
                         <small class="text-danger">{{$errors->first('totalservicio')}}</small>
 
                     </div>
@@ -73,7 +73,6 @@
                         <input type="number" class="form-control" placeholder="Ingrese el precio"
                             name="totalplan" min="10000" max="1000000" required>
                             <small class="text-danger">{{$errors->first('totalplan')}}</small>
-                            
                     </div>
 
                    {{--  <div class="form-group col-6">
@@ -107,7 +106,8 @@
                             <label for="">Nombre</label>
                             <select name="servicios" id="servicios" class="form-control" required>
                                 @foreach ($servicios as $value)
-                                <option value="{{ $value->id }}">{{ $value->nombre }}</option>
+                                <option value="{{ $value->id }}">{{ $value->nombre }} ${{ $value->precio }}</option>        
+
                                 @endforeach
                             </select>
                         </div>
@@ -124,6 +124,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Nombre</th>
+                                        <th>Precio</th>
                                         <th>Opciones</th>
                                     </tr>
                                 </thead>
@@ -146,9 +147,14 @@
 @section('scripts')
 <script>
     let serviciosD = [''];
+    let suma = 0;
+    let resta=0;
     function agregar_servicio(){
                     let servicio_id = $("#servicios option:selected").val();
                     let servicio_text = $("#servicios option:selected").text();
+                    let precio_ser = servicio_text.split("$");
+                    let precio = precio_ser[1];
+
                     /* let cantidad = $("#cantidad").val(); */
                     let existe = serviciosD.includes(servicio_id)
                                         
@@ -169,14 +175,21 @@
                             <tr id="tr-${servicio_id}">
                                 <td>
                                     <input type="hidden" name="servicio_id[]" value="${servicio_id} "/>
-                                    ${servicio_text}
+                                    ${precio_ser[0]}
                                 </td>
+                                <td>
+                                    ${precio}
+                                </td>
+                                
                                 <td>
                                     <button type="button" class="btn btn-danger" onclick="eliminar_servicio(${servicio_id})"><i class="fa-solid fa-trash"></i></button>
                                 </td>
                             <tr>
                         
                         `);
+                        suma = suma + parseInt(precio);
+                        console.log(suma) 
+                        document.getElementById('totalservicio').value = suma;
                         }
                     
         
@@ -187,8 +200,12 @@
                     if(index>-1){
                         serviciosD.splice(index, 1);
                         $("#tr-" + id).remove();
+
+                        /* suma = suma - parseInt(precio);
+                        console.log(suma) 
+                        document.getElementById('totalservicio').value = suma; */
                     }
-                     console.log("Nuevo araray",serviciosD);
+                        console.log("Nuevo araray",serviciosD);
                 }
 
 </script>

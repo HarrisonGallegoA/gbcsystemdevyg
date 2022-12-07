@@ -84,6 +84,10 @@ Route::controller(PlanServicioController::class)->group(
     }
 );
 
+Route::get('error', function(){
+    abort('404');
+});
+
 
 
 });

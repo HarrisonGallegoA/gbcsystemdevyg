@@ -35,6 +35,10 @@ class PlanServicioController extends Controller
                 "estado"=>1
             ]);
 
+           /*  if ($input['servicio_id']) {
+                # code...
+            } */
+
            foreach($input["servicio_id"] as $key => $value){
                     PlanServicio::create([
                     "servicio_id"=>$value,

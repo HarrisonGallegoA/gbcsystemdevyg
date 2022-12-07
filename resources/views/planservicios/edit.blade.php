@@ -5,8 +5,8 @@
 @section('titulo_ventana', 'Actualizar Plan')
 
 @section('Contenido_app')
-<br><br>
-
+<hr>
+<br>
 <form action="{{ url('plan/actualizar', $planes->id) }}" method="post">
     @csrf
     @method('PUT')
@@ -70,6 +70,7 @@
         </div>
     </div>
 </form>
+
     <br><br>
 
 

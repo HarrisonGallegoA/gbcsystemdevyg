@@ -2,15 +2,12 @@
 @section('aside_menu')
 @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Lista Planes')
+@section('titulo_ventana', 'Lista de planes')
 
 @section('Contenido_app')
 
 
-
-
-
-<br>
+<hr>
 <div class="row">
     <div class="col">
         <div class="col-sm-8 col-sm-offset-2">

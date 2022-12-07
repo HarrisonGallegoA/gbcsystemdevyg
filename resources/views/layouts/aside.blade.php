@@ -3,8 +3,9 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                 <div class="sidebar-brand-icon">
-                    <i class="fa-solid fa-tent"></i>
+                   <img src="{{asset('asset/img/bosque.png')}}" alt="" width="50" height="50">
                 </div>
+                
                 <div class="sidebar-brand-text mx-3">GBC System</div>
             </a>
 
@@ -128,7 +129,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="">
                     <i class="bi bi-question-circle-fill"></i>
                     <span>Ayudas</span></a>
             </li>
