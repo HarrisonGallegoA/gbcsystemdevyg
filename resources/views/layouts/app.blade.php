@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8w_YvQx_muSCC1uQemsLUdV3-XOTaKAiJgw&usqp=CAU">
+    <link rel="icon" href="{{asset('asset/img/campamento.png')}}">
 
     <title>GBCSystem - Administrador</title>
 
@@ -240,13 +240,12 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Perfil
                                 </a>
-                                
                                 <div class="dropdown-divider"></div>
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
                                 <a class="dropdown-item" href="{{ route('logout') }}"  data-toggle="modal" data-target="#logoutModal" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    {{ __('Log Out') }}
+                                    {{ __('Cerrar Sesión') }}
                                 </a>
                             </form>
                             </div>
@@ -301,28 +300,29 @@
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
-                <div class="modal-footer">
-                    <form method="POST" action="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" >
-                        @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
-                </div>
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Listo para salir?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.</div>
+            <div class="modal-footer">
+                <form method="POST" action="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();" >
+                    @csrf
+                <a class="btn btn-primary" type="submit">Cerrar sesión</a>
+            </form>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
-        <!--agenda-->
-    <script src="{{ asset('asset/js/agenda.js') }}" defer></script>
-    <script src="{{ asset('asset/js/app.js') }}" defer></script>
+</div>
+<!--agenda-->
+<script src="{{ asset('asset/js/agenda.js') }}" defer></script>
+<script src="{{ asset('asset/js/app.js') }}" defer></script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('asset/vendor/jquery/jquery.min.js')}}"></script>
@@ -333,6 +333,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('asset/js/sb-admin-2.min.js')}}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{asset('asset/vendor/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{asset('asset/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('asset/js/demo/chart-pie-demo.js')}}"></script>
 
     <!-- Page level plugins datatable-->
 
@@ -379,6 +386,7 @@
 
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap4.min.js"></script>
+    
 
     
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Domo;
-use App\Models\Servicio;
-use App\Models\Plan;
-use App\Models\PlanServicio;
-use Illuminate\Http\Request;
 use DB;
+use App\Models\Domo;
+use App\Models\Plan;
+use App\Models\Servicio;
+use App\Models\PlanServicio;
+use Illuminate\Http\Request; 
+use App\Http\Requests\PlanServicioRequest;
 
 class PlanServicioController extends Controller
 {
@@ -18,7 +19,7 @@ class PlanServicioController extends Controller
         return view('planservicios.index', compact('servicios','domos')); 
     }
 
-    public function save(Request $request){
+    public function save(PlanServicioRequest $request){
 
             $input = $request->all();
             try{ 
@@ -33,6 +34,10 @@ class PlanServicioController extends Controller
                 "domo_id" =>$input["domo_id"],
                 "estado"=>1
             ]);
+
+           /*  if ($input['servicio_id']) {
+                # code...
+            } */
 
            foreach($input["servicio_id"] as $key => $value){
                     PlanServicio::create([
@@ -72,5 +77,47 @@ class PlanServicioController extends Controller
         ->get();
 
         return view("planservicios.show", compact('planes', 'servicios'));
+    }
+
+    public function edit($id)
+    {
+        //muestra los datos en un formulario
+        $servicioplan  = PlanServicio::select("plan_domo_servicio.*")
+        ->where("plan_domo_servicio.plan_id", $id)->get();
+        $servicios = Servicio::where('estado', 1)->get(); 
+        $planes = Plan::find($id);
+        $domos = Domo::where('estado', 1)->get();
+        return view("planservicios.edit", compact('planes', 'domos', 'servicios', 'servicioplan'));
+    }
+
+
+
+    public function update(Request $request,  $id)
+    {
+        //actuliza los datos en la base de datos
+        $plan =  Plan::find($id);
+        $plan->nombre = $request->post('nombre');
+        $plan->domo_id = $request->post('domo_id');
+        $plan->descripcion = $request->post('descripcion');
+        $plan->totalservicio = $request->post('totalservicio');
+        $plan->precioplan = $request->post('precioplan');
+        $plan->totalplan = $request->post('totalplan');
+        $plan->estado = $request->post('estado');
+
+        // dd($request->all());
+        $plan->save();
+        PlanServicio::where('plan_id','=',$plan->id)->delete();
+        foreach($request["servicio_id"] as $key => $value){
+            PlanServicio::create([
+            "servicio_id"=>$value,
+            "plan_id"=>$plan->id,
+        ]);
+
+         /* $ins = Servicio::find($value);
+        $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
+    }
+
+
+        return redirect("plan/listar")->with('status', '2');
     }
 }

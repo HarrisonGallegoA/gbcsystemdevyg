@@ -34,8 +34,10 @@ class UserController extends Controller
      */
     public function create(UserRequest $request)
     {
-        $roles=Role::pluck('name', 'name')->all();
-        return view('usuarios.crear',compact('roles'));
+    /* $roles=Role::pluck('name', 'name')->all(); */
+        $roles=Role::all();
+        $users=User::all();
+        return view('admin.user.create',compact('roles', 'users'));
     }
 
     /**
@@ -55,9 +57,8 @@ class UserController extends Controller
         $users=User::create($input);
         $users->assignRole($request->input('role'));
 
-
-       return redirect()->route('ListUser');
-       ;
+       return redirect('/Usuarios')->with('status', '1');
+       
     }
 
     /**
@@ -112,7 +113,7 @@ class UserController extends Controller
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
 
         $user->assignRole($request->input('role'));
-        return redirect()->route('ListUser');
+        return redirect()->route('ListUser')->with('status', '2');
 
     }
 

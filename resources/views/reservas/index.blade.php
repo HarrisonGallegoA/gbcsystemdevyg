@@ -2,14 +2,14 @@
 @section('aside_menu')
 @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Agregar Plan')
+@section('titulo_ventana', 'Lista Reserva')
 
 @section('Contenido_app')
 <br>
 <div class="row">
     <div class="col">
         <div class="col-sm-8 col-sm-offset-2">
-            <a class="btn btn-info col-3" href="/reserva/listar"><i class="fa-solid fa-igloo"></i></i>
+            <a class="btn btn-info col-3" href="/reserva/listar"><i class="bi bi-calendar-month-fill"></i>
                 Lista de Reservas</a>
         </div>
         <br>
@@ -23,8 +23,6 @@
     </div>
 </div>
 
-
-
 <form action="/reserva/guardar" method="post">
     @csrf
     <div class="row">
@@ -33,55 +31,75 @@
                 <div class="card-header">
                     <h5 class="text-center">Crear Reserva</h5>
                 </div>
-                <div class="row card-body">
-                    <div class="form-group col-6">
-                        <label for="nombre">pagoparcial</label>
-                        <input type="number" class="form-control" placeholder="Ingrese el nombre del domo" name="nombre"
-                            required>
-                    </div>
+
+                    <div class="row card-body">
+
+                   <div class="form-group col-6">
+                            <label for="user_id">Usuario</label>
+                            <select name="user_id" id="user_id" class="form-control" required>
+                                @foreach ($usuarios as $value)
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
                             <div class="form-group col-6">
-                                <label for="precioservicio">totalpagoparcial</label>
-                                <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
-                                    name="totalservicio" required>
+                                <label for="fechainicio">Fecha Inicio</label>
+                                <input type="date" class="form-control" placeholder=""
+                                    name="fechainicio" required>
+                                    <small class="text-danger">{{$errors->first('fechainicio')}}</small>
                             </div>
                             <div class="form-group col-6">
-                                <label for="precioservicio">fecha reserva </label>
-                                <input type="date" class="form-control" placeholder="Ingrese el numero de baños"
-                                    name="totalservicio" required>
+                                <label for="fechareserva">Fecha Reserva</label>
+                                <input type="date" class="form-control" placeholder=""
+                                    name="fechareserva" required>
+                                    <small class="text-danger">{{$errors->first('fechareserva')}}</small>
                             </div>
                             <div class="form-group col-6">
-                                <label for="precioservicio">fechainicio</label>
-                                <input type="date" class="form-control" placeholder="Ingrese el numero de baños"
-                                    name="totalservicio" required>
+                                <label for="fechafinal">Fecha Final</label>
+                                <input type="date" class="form-control" placeholder=""
+                                    name="fechafinal" required>
+                                    <small class="text-danger">{{$errors->first('fechafinal')}}</small>
                             </div>
                             <div class="form-group col-6">
-                                <label for="precioservicio">fechafinal</label>
-                                <input type="date" class="form-control" placeholder="Ingrese el numero de baños"
-                                    name="totalservicio" required>
+                                <label for="fechapagoparcial">Fecha Pago Parcial</label>
+                                <input type="date" class="form-control" placeholder=""
+                                    name="fechapagoparcial" required>
+                                    <small class="text-danger">{{$errors->first('fechapagoparcial')}}</small>
                             </div>
+
+                                <div class="form-group col-6">
+                                    <label for="pagoparcial">Pago Parcial</label>
+                                    <input type="number" class="form-control" placeholder="Ingrese el pago parcial" name="pagoparcial"
+                                        required>
+                                        <small class="text-danger">{{$errors->first('pagoparcial')}}</small>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="totalpagoparcial">Total Pago</label>
+                                    <input type="number" class="form-control" placeholder="Ingrese el total de pago parcial  "
+                                        name="totalpagoparcial" required>
+                                        <small class="text-danger">{{$errors->first('totalpagoparcial')}}</small>
+                                </div>
                             <div class="form-group col-6">
-                                <label for="precioservicio">fechapagoparcial</label>
-                                <input type="date" class="form-control" placeholder="Ingrese el numero de baños"
+                                <label for="totalservicio">Total Servicios</label>
+                                <input type="number" class="form-control" placeholder="Ingrese el total servicios"
                                     name="totalservicio" required>
-                            </div>
-                            <div class="form-group col-6">
-                                <label for="precioservicio">Total servicios</label>
-                                <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
-                                    name="totalservicio" required>
+                                    <small class="text-danger">{{$errors->first('totalservicio')}}</small>
                             </div>
 
 
                     <div class="form-group col-6">
-                        <label for="    ">Domo</label>
+                        <label for="domo_id">Domo</label>
                         <select name="domo_id" class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach($domos as $value)
-                            <option value="{{ $value->id }}">{{ $value->nombre }}</option>
+                            <option value="{{ $value->id}}">{{ $value->nombre }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group col-6">
-                        <label for="    ">Plan</label>
+                        <label for="id_plan">Plan</label>
                         <select name="id_plan" class="form-control" required>
                             <option value="">Seleccione</option>
                             @foreach($plan as $value)
@@ -122,7 +140,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <button onclick="agregar_servicio()" type="button" class="btn btn-success float-right"><i
+                        <button onclick="agregar_servicio()" type="button" class="btn btn-info float-right"><i
                                 class="fa-solid fa-plus"></i></button>
                     </div>
                 </div>

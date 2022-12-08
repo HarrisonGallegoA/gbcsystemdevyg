@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="{{asset('asset/img/campamento.png')}}">
 
     <title>GbcSystem Acceder</title>
 
@@ -90,11 +91,11 @@
                                         </a>
                                     @endif
                                     </div>
-                                    <!--<div class="text-center">
+                                    <div class="text-center">
                                     @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
                                 @endif
-                                    </div>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>

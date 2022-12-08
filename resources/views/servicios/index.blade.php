@@ -37,14 +37,14 @@
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" name="nombre" id="nombre"
-                            placeholder="Ingrese el nombre del servicio" value="{{old('nombre')}}">
+                            placeholder="Ingrese el nombre del servicio" value="{{old('nombre')}}"  minlength="5"  maxlength="20" required>
                         <small class="text-danger">{{$errors->first('nombre')}}</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="descripcion">Descripcion</label>
+                        <label for="descripcion">Descripción</label>
                         <textarea class="form-control" name="descripcion" id="descripcion"
-                            rows="2">{{old('descripcion')}}</textarea>
+                            rows="2"  minlength="10"  maxlength="99" required>{{old('descripcion')}}</textarea>
                         <small class="text-danger">{{$errors->first('descripcion')}}</small>
 
                     </div>
@@ -52,14 +52,14 @@
                     <div class="form-group">
                         <label for="precio">Precio</label>
                         <input type="number" class="form-control" name="precio" id="precio"
-                            placeholder="Ingrese el precio" value="{{old('precio')}}">
+                            placeholder="Ingrese el precio" value="{{old('precio')}}"  min="10000" max="1000000"  required >
                         <small class="text-danger">{{$errors->first('precio')}}</small>
                     </div>
 
                     <div class="form-group">
                         <label for="tiempo">Tiempo</label>
-                        <input type="datetime-local" class="form-control" id="tiempo" name="tiempo"
-                            placeholder="ingrese la fecha" value="{{old('tiempo')}}">
+                        <input type="time" class="form-control" id="tiempo" name="tiempo"
+                            placeholder="ingrese la fecha" value="{{old('tiempo')}}" required>
                         <small class="text-danger">{{$errors->first('tiempo')}}</small>
                     </div>
 
@@ -170,7 +170,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descripcion">descripcion</label>
+                            <label for="descripcion">Descripción</label>
                             <textarea class="form-control" name="descripcion" id="descripcion"
                                 rows="2" disabled>{{old('descripcion', $servicio->descripcion)}}</textarea>
                             <small class="text-danger">{{$errors->first('descripcion')}}</small>
@@ -178,7 +178,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="precio">precio</label>
+                            <label for="precio">Precio</label>
                             <input type="number" class="form-control" name="precio" id="precio"
                                 placeholder="Ingrese su edad" value="{{old('precio', $servicio->precio)}}" disabled>
                             <small class="text-danger">{{$errors->first('precio')}}</small>
@@ -186,7 +186,7 @@
 
                         <div class="form-group">
                             <label for="tiempo">Tiempo</label>
-                            <input type="datetime-local" class="form-control" id="tiempo" name="tiempo"
+                            <input type="time" class="form-control" id="tiempo" name="tiempo"
                                 placeholder="ingrese un email" value="{{old('tiempo', $servicio->tiempo)}}" disabled>
                             <small class="text-danger">{{$errors->first('tiempo')}}</small>
                         </div>
@@ -231,39 +231,33 @@
                     <div class="modal-body">
                         @csrf @method('PUT')
 
-                        @if($errors->any())
-                        @foreach($errors->all() as $error)
-                        <p>{{$error}}</p>
-                        @endforeach
-                        @endif
-
-
+                        
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre" id="nombre"
-                                placeholder="Ingrese el nombre del servicio" value="{{old('nombre', $servicio->nombre)}}">
+                                placeholder="Ingrese el nombre del servicio" value="{{($servicio->nombre)}}" minlength="5"  maxlength="20" required>
                             <small class="text-danger">{{$errors->first('nombre')}}</small>
                         </div>
 
                         <div class="form-group">
-                            <label for="descripcion">descripcion</label>
+                            <label for="descripcion">Descripción</label>
                             <textarea class="form-control" name="descripcion" id="descripcion"
-                                rows="2">{{old('descripcion', $servicio->descripcion)}}</textarea>
+                                rows="2" minlength="10"  maxlength="99" required>{{old('descripcion', $servicio->descripcion)}}</textarea>
                             <small class="text-danger">{{$errors->first('descripcion')}}</small>
 
                         </div>
 
                         <div class="form-group">
-                            <label for="precio">precio</label>
+                            <label for="precio">Precio</label>
                             <input type="number" class="form-control" name="precio" id="precio"
-                                placeholder="Ingrese el precio" value="{{old('precio', $servicio->precio)}}">
+                                placeholder="Ingrese el precio" value="{{old('precio', $servicio->precio)}}" min="10000" max="1000000" required>
                             <small class="text-danger">{{$errors->first('precio')}}</small>
                         </div>
 
                         <div class="form-group">
                             <label for="date">Tiempo</label>
-                            <input type="datetime-local" class="form-control" id="tiempo" name="tiempo"
-                                placeholder="ingrese la fecha" value="{{old('tiempo', $servicio->tiempo)}}">
+                            <input type="time" class="form-control" id="tiempo" name="tiempo"
+                                placeholder="ingrese la fecha" value="{{old('tiempo', $servicio->tiempo)}}" required>
                             <small class="text-danger">{{$errors->first('tiempo')}}</small>
                         </div>
 

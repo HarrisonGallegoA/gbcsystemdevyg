@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 use App\Models\Domo;
 use App\Models\Plan;
+use App\Models\Venta;
 use Illuminate\Http\Request;
-
 
 
 class DashboardController extends Controller
 {
     public function index(){
-        $domos = Domo::find();
-        $planes = Plan::find();
-
-        return view('Dashboard', compact('planes', 'domos'));}
+      
+        $venta =Venta::all()->count();
+       
+        //return view('Dashboard', compact('venta'));
+        return $venta;
+    }
 }

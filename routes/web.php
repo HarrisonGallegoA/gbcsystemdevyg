@@ -9,7 +9,9 @@ use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\PlanServicioController;
 use App\Http\Controllers\CaracteristicasController;
 use App\Http\Controllers\DomoCaracteristicaController;
+use App\Http\Controllers\VentasDetalleController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\DashboarController;
 use App\Http\Controllers\ReservaDetalleController;
 
 /*
@@ -55,7 +57,8 @@ Route::get('/Roles', function () {
  
 //Usuarios
 Route::get('/Usuarios', [UserController::class, 'index'])->name('ListUser');
-Route::post('user/guardar', [UserController::class, 'store'])->name('user.store');
+Route::get('/usuario/crear', [UserController::class, 'create'])->name('crearUsuario');
+Route::post('/user/guardar', [UserController::class, 'store'])->name('user.store');
 Route::put('/Usuarios/{user}/actualizar', [UserController::class, 'update'])->name('userUpdate');
 Route::delete('/Usuarios/{user}', [UserController::class, 'delete'])->name('userDestroy');
 
@@ -83,15 +86,8 @@ Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])-
 Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
 Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
 Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
-// Route::get('/domo/edit', [DomoCaracteristicaController::class, 'edit'])->name('domocaracteristicaedit');
-// Route::resource('domocaracteristica/edit', DomoCaracteristicaController::class)->names('domocaracteristica');
+Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar'); 
 
-Route::controller(DomoCaracteristicaController::class)->group(
-    function () {
-        Route::get('domo/editar/{id}', 'edit');
-        Route::put('domo/actualizar/{id}', 'update');
-    }
-);
 
 
 
@@ -99,7 +95,17 @@ Route::controller(DomoCaracteristicaController::class)->group(
 Route::get('/plan/servicios', [PlanServicioController::class, 'index'])->name('planservicioindex');
 Route::post('/plan/guardar', [PlanServicioController::class, 'save'])->name('planservicioguardar');
 Route::get('/plan/listar', [PlanServicioController::class, 'show'])->name('planserviciolistar');
+//actualizar
+Route::controller(PlanServicioController::class)->group(
+    function () {
+        Route::get('plan/editar/{id}', 'edit');
+        Route::put('plan/actualizar/{id}', 'update');
+    }
+);
 
+Route::get('error', function(){
+    abort('404');
+});
 
 //rutas agenda
 
@@ -115,5 +121,48 @@ Route::post('agenda/agregar', [AgendaController::class, 'store'])->name('agregar
 Route::get('/reserva/servicios', [ReservaDetalleController::class, 'index'])->name('reservadetalleindex');
 Route::post('/reserva/guardar', [ReservaDetalleController::class, 'save'])->name('reservadetalleguardar');
 Route::get('/reserva/listar', [ReservaDetalleController::class, 'show'])->name('reservadetallelistar');
+
+
+Route::get('/domo/caracteristicas', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex');
+Route::post('/domo/guardar', [DomoCaracteristicaController::class, 'save'])->name('domocaracteristicaguardar');
+Route::get('/domo/listar', [DomoCaracteristicaController::class, 'show'])->name('domocaracteristicalistar');
+Route::put('/domo/listar/{domo}', [DomoCaracteristicaController::class, 'actualizar'])->name('domocaracteristicaactualizar');
+
+
+Route::controller(DomoCaracteristicaController::class)->group(
+    function () {
+        Route::get('domo/editar/{id}', 'edit');
+        Route::put('domo/actualizar/{id}', 'update');
+    }
+);
+
+Route::controller(ReservaDetalleController::class)->group(
+    function () {
+        Route::get('reserva/editar/{id}', 'edit');
+        Route::put('reserva/actualizar/{id}', 'update');
+    }
+);
+
+//rutas venta
+Route::get('/venta/servicios', [VentasDetalleController::class, 'index'])->name('ventadetalleindex');
+Route::post('/venta/guardar', [VentasDetalleController::class, 'save'])->name('ventadetalleguardar');
+Route::get('/venta/listar', [VentasDetalleController::class, 'show'])->name('ventadetallelistar');
+
+Route::controller(VentasDetalleController::class)->group(
+    function () {
+        Route::get('venta/editar/{id}', 'edit');
+        Route::put('venta/actualizar/{id}', 'update');
+    }
+);
+
+
+
 });
+
+
+
+
+
+
+
 

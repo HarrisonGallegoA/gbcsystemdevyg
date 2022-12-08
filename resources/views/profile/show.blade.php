@@ -3,7 +3,7 @@
 @section('aside_menu')
 @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Roles')
+@section('titulo_ventana', 'Usuario')
 
 @section('Contenido_app')
 <link href="{{asset('asset/css/sb-admin-2.min.css')}}" rel="stylesheet">

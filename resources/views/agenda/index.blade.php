@@ -108,7 +108,7 @@
                <div class="modal-footer">
                <button type="button" class="btn btn-success"id="btnGuardar">Guardar</button>
                <button type="button" class="btn btn-warning"id="btnModificar" disabled>Modificar</button>
-               <button type="button" class="btn btn-danger"id="btnEliminar" disabled>Eliminar</button>
+               {{-- <button type="button" class="btn btn-danger"id="btnEliminar" disabled>Eliminar</button> --}}
                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
 
             </div>

@@ -11,17 +11,14 @@ return new class extends Migration
      *
      * @return void
      */
-
-     //El campo precio se debe colocar double
     public function up()
     {
-        Schema::create('servicios', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre', 20)->unique();
-            $table->string('descripcion', 100);
-            $table->double('precio');
-            $table->time('tiempo');
-            $table->integer('estado'); 
+        Schema::create('venta_detalle', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->integer('servicio_id')->unsigned();
+            $table->integer('reserva_id')->unsigned();
+            $table->foreign('servicio_id')->references('id')->on('servicios');
+            $table->foreign('reserva_id')->references('id')->on('reserva');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servicios');
+        Schema::dropIfExists('venta_detalle');
     }
 };

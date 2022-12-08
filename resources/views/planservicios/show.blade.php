@@ -2,13 +2,12 @@
 @section('aside_menu')
 @include('layouts.aside')
 @endsection
-@section('titulo_ventana', 'Lista Planes')
+@section('titulo_ventana', 'Lista de planes')
 
 @section('Contenido_app')
 
 
-
-<br>
+<hr>
 <div class="row">
     <div class="col">
         <div class="col-sm-8 col-sm-offset-2">
@@ -60,13 +59,17 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-info col-10" href="/plan/listar?id={{$value->id}}"><i class="fa-solid fa-eye">
+                            <a class="btn btn-info col-10" href="/plan/listar?id={{$value->id}}"><i
+                                    class="fa-solid fa-eye">
                             </a></i>
                         </td>
                         <td>
 
-                            <a class="btn btn-warning col-9"><i class="fa-sharp fa-solid fa-pen-to-square"></i>
-                            </a>
+                            <form action="{{ url('plan/editar', $value->id) }}" method="GET">
+                                <button class="btn btn-warning btn-xs">
+                                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </form>
 
                         </td>
                     </tr>
@@ -83,7 +86,8 @@
 
 
 <!-- Modal -->
- {{-- <div class="modal fade" id="servicios{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="servicios{{ $value->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -94,31 +98,31 @@
             </div>
             <div class="modal-body">
                 @if(count($servicios) > 0)
-                
-                        <div class="table-responsive">
-                            <table class="table table-bordered">
-                                <thead class="thead-dark">
-                                    </tr>
-                                    <t>
-                                        <th>Nombre</th>
-                                        <th>Descripcion</th>
-                                        <th>Precio</th>
-                                        <th>Tiempo</th>
-                                        </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($servicios as $value)
-                                    <tr>
-                                        <td>{{$value->nombre}}</td>
-                                        <td>{{$value->descripcion}}</td>
-                                        <td>{{$value->precio}}</td>
-                                        <td>{{$value->tiempo}}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            </tr>
+                            <t>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Precio</th>
+                                <th>Tiempo</th>
+                                </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($servicios as $value)
+                            <tr>
+                                <td>{{$value->nombre}}</td>
+                                <td>{{$value->descripcion}}</td>
+                                <td>{{$value->precio}}</td>
+                                <td>{{$value->tiempo}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
                 @else
                 <div class="alert alert-warning">
                     Este plan no tiene servicios
@@ -130,10 +134,10 @@
             </div>
         </div>
     </div>
-</div>  --}}
+</div> --}}
 
 
- @if(count($servicios) > 0)
+@if(count($servicios) > 0)
 <div class="card shadow mb-4 col-10">
     <div class="card-body">
         <div class="table-responsive">
@@ -179,6 +183,18 @@
   timer: 2500
 
 })
+</script>
+@endif
+
+@if(session('status')== "2")
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Perfecto!',
+        text: 'Plan actualizado',
+        showConfirmButton: false,
+        timer: 2500
+    })
 </script>
 @endif
 @endif

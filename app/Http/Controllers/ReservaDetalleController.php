@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Domo;
+use App\Models\User;
 use App\Models\Servicio;
 use App\Models\Plan;
 use App\Models\Reserva;
+use App\Http\Requests\ReservaRequest;
 use App\Models\ReservaDetalle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,11 +15,13 @@ use Illuminate\Support\Facades\DB;
 class ReservaDetalleController extends Controller
 {
     public function index(){
+        $usuarios = User::all();
         $servicios = Servicio::where('estado', 1)->get();
         $domos = Domo::where('estado', 1)->get();
         $plan = Plan::where('estado', 1)->get();
         //Retornamos utiliizando compact, ára retornar un array de variables con sus valores
-        return view('Reservas.index', compact('servicios','domos','plan'));
+        return view('Reservas.index', compact('servicios','domos','plan','usuarios'));
+
     }
 
     public function save(Request $request){
@@ -40,11 +44,12 @@ class ReservaDetalleController extends Controller
                 "estado"=>1
             ]);
 
-           foreach($input["servicio_id"] as $key => $value){
-                    ReservaDetalle::create([
-                    "servicio_id"=>$value,
+            foreach($input["servicio_id"] as $key => $value){
+                ReservaDetalle::create([
+                "reserva_id"=>$reserva->id,
+                "servicio_id"=>$value,
 
-                ]);
+            ]);
 
                  /* $ins = Servicio::find($value);
                 $ins->update(["cantidad"=> $ins->cantidad - $input["cantidades"][$key]]);  */
@@ -73,11 +78,47 @@ class ReservaDetalleController extends Controller
             ->get();
         }
 
-        $reservas = Reserva::select("reserva.*", "domo.nombre as domo","plan.nombre as plan", "users.name as users")
-        ->join("domo", "domo.id", "=", "reserva.domo_id", "plan", "plan.id", "=", "reserva.id_plan", "users", "user.id",
-        "=", "reserva.user_id")
+        $reserva = Reserva::select("reserva.*", "domo.nombre as domo","plan.nombre as plan","users.name as users")
+        ->join("domo", "domo.id", "=", "reserva.domo_id")
+        ->join("plan", "plan.id", "=", "reserva.id_plan")
+        ->join("users", "users.id", "=", "reserva.user_id")
         ->get();
 
-        return view("planservicios.show", compact('planes', 'servicios'));
+        return view("Reservas.show", compact( 'reserva', 'servicios'));
+    }
+    public function edit($id)
+    {
+        //muestra los datos en un formulario
+
+        // $caracteristicas = Caracteristica::find($id);
+        $reserva = Reserva::find($id);
+        $users = User::all();
+        $domos = Domo::where('estado', 1)->get();
+        $planes = Plan::where('estado', 1)->get();
+
+        return view("Reservas.edit", compact('reserva','users','domos','planes'));
+    }
+
+
+
+    public function update(ReservaRequest $request,  $id)
+    {
+        //actuliza los datos en la abase de datos
+        $reserva =  Reserva::find($id);
+       /*  $reserva->user_id = $request->post('user_id'); */
+        $reserva->pagoparcial = $request->post('pagoparcial');
+        $reserva->totalpagoparcial = $request->post('totalpagoparcial');
+        $reserva->fechareserva = $request->post('fechareserva');
+        $reserva->fechainicio = $request->post('fechainicio');
+        $reserva->fechafinal = $request->post('fechafinal');
+        $reserva->fechapagoparcial = $request->post('fechapagoparcial');
+        $reserva->totalservicio = $request->post('totalservicio');
+        $reserva->domo_id = $request->post('domo_id');
+        $reserva->id_plan = $request->post('id_plan');
+        $reserva->estado = $request->post('estado');
+        $reserva->save();
+
+
+        return redirect("reserva/listar")->with('status', '2');
     }
 }

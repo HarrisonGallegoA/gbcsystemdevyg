@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Servicio;
 use Illuminate\Http\Request;
+use App\Http\Requests\ServiciosRequest;
+use App\Http\Requests\ServiciosActualizarRequest;
 
 class ServiciosController extends Controller
 {
@@ -14,14 +16,14 @@ class ServiciosController extends Controller
 
     }
 
-    public function guardar(){
+    public function guardar(ServiciosRequest $request){
 
         $campos=request()->validate([
-            'nombre'=>'required|min:3',
-            'descripcion'=>'required',
-            'precio'=>'required',
-            'tiempo'=>'required',
-            'estado'=>'required',
+            'nombre'=>'',
+            'descripcion'=>'',
+            'precio'=>'',
+            'tiempo'=>'',
+            'estado'=>'',
     
         ]);
         Servicio::create($campos);
@@ -30,14 +32,14 @@ class ServiciosController extends Controller
     
     }
 
-    public function actualizar(Servicio $servicio){
+    public function actualizar(Servicio $servicio, ServiciosActualizarRequest $request){
 
         $campos=request()->validate([
-            'nombre'=>'required|min:3',
-            'descripcion'=>'required',
-            'precio'=>'required',
-            'tiempo'=>'required',
-            'estado'=>'required',
+            'nombre'=>'',
+            'descripcion'=>'',
+            'precio'=>'',
+            'tiempo'=>'',
+            'estado'=>'',
     
         ]);
         $servicio->update($campos);
@@ -46,9 +48,9 @@ class ServiciosController extends Controller
     }
 
 
-    public function eliminar(Servicio $servicio)
+   /*  public function eliminar(Servicio $servicio)
     {
         $servicio->delete();
         return redirect('servicios')->with('mensaje', 'Servicio eliminada');
-    }
-}
+    }*/
+} 

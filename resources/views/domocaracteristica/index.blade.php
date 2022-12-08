@@ -49,29 +49,20 @@
                         </select>
                     </div> --}}
                     <div class="form-group col-6">
-                        <label for="numerobaños">Numero de baños</label>
+                        <label for="numerobaños">Número de baños</label>
                         <input type="number" class="form-control" placeholder="Ingrese el numero de baños"
                             name="numerobaños" required>
                     </div>
 
 
-                       <div class="form-group">
-                           <label for="tipodomo">tipodomo</label>
+                       <div class="form-group col-6">
+                           <label for="tipodomo">Tipo de domo</label>
                          <select class="form-control" name="tipodomo" id="tipodomo">
                             <option value="Familiar">Familiar</option>
                             <option value="Pareja">Pareja</option>
                          </select>
                       </div>
 
-
-                      <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <select class="form-control" name="estado">
-                            <option value="1">Activo</option>
-                            <option value="2">Inactivo</option>
-                        </select>
-
-                    </div>
 
 
                 </div>

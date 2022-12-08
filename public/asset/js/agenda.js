@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
-    $("#btnEliminar").click((e) => {
+    /* $("#btnEliminar").click((e) => {
         if ($('#idAgenda').val() != "") {
             var id = $('#idAgenda').val();
             Swal.fire({
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
             })
 
         }
-    });
+    }); */
 
     document.getElementById("btnGuardar").addEventListener("click", function () {
 
