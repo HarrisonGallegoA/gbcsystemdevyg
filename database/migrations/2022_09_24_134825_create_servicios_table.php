@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('descripcion', 100);
             $table->double('precio');
             $table->time('tiempo');
-            $table->integer('estado'); 
+            $table->enum('estado',[1,2]); 
             $table->timestamps();
         });
     }

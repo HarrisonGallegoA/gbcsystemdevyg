@@ -128,10 +128,9 @@
                         </td>
                         <td>
                             
-                            {{-- <form action="{{route('servicioEliminar', $servicio)}}" method="post" class="formulario-eliminar">
-                                <a href="#mostrarServicio{{$servicio->id}}" data-toggle="modal"
-                                    data-target="#mostrarServicio{{$servicio->id}}"><i
-                                        class="fas fa-info-circle fa-lg text-success"></i></a> --}}
+                          {{--  <form action="{{route('servicioEliminar', $servicio)}}" method="post" class="formulario-eliminar"> --}}
+                                <a class="btn btn-success" href="#mostrarServicio{{$servicio->id}}" data-toggle="modal"
+                                    data-target="#mostrarServicio{{$servicio->id}}"><i class="bi bi-info-circle"></i></a>
                                 <a class="btn btn-warning" href="#editarServicio{{$servicio->id}}" data-toggle="modal"
                                     data-target="#editarServicio{{$servicio->id}}"
                                     style="margin-left: 20px; margin-right: 20px;"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
@@ -194,9 +193,14 @@
                         <div class="form-group">
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado" disabled>
-                                <option value="1">Activo</option>
-                                <option value="2">Inactivo</option> 
+                                @if($servicio->estado == 1)
+                                <option value="{{ $servicio->id }}">Activo</option>
+                                @elseif ($servicio->estado == 2)
+                                <option value="{{ $servicio->id }}">Inactivo</option>
+                                @endif
                             </select>
+                            {{-- <option value="{{ $servicio->id }}">{{ $servicio->estado }}
+                            </option> --}}
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -257,10 +261,14 @@
                         <div class="form-group">
                             <label for="estado">Estado</label>
                             <select class="form-control" name="estado" id="estado">
-                                <option value="1">Activo</option>
-                                <option value="2">Inactivo</option> 
+                                @if($servicio->estado == 1)
+                                <option value="1" selected>Activo</option>
+                                <option value="2" >Inactivo</option>
+                                @elseif ($servicio->estado == 2)
+                                <option value="1" >Activo</option>
+                                <option value="2" selected>Inactivo</option>
+                                @endif
                             </select>
-    
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -335,15 +343,31 @@
 
 @endif
 
-@if (session('mensaje'))
+@if(session('status'))
+@if(session('status')== "1")
 <script>
-    Swal.fire(
-            //'El empleado se guardó con éxito!',
-            '{{ session('mensaje') }}',
-            'Presione el boton ok para cerrar!',
-            'success'
-        )
+    Swal.fire({
+  icon: 'success',
+  title: 'Perfecto!',
+  text: 'Servicio guardado',
+  showConfirmButton: false,
+  timer: 2500
+
+})
 </script>
+@endif
+
+@if(session('status')== "2")
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Perfecto!',
+        text: 'Servicio actualizado',
+        showConfirmButton: false,
+        timer: 2500
+    })
+</script>
+@endif
 @endif
 @if($errors->any())
 <script>
@@ -351,7 +375,7 @@
         $('#crearServicio').modal('show')
     })
 </script>
-@endif
+@endif 
 
 @endsection()
 @endsection

@@ -17,9 +17,12 @@ return new class extends Migration
             $table->increments('id')->unsigned();
             $table->integer('plan_id')->unsigned();
             $table->integer('servicio_id')->unsigned();
-            $table->foreign('plan_id')->references('id')->on('plan');
-            $table->foreign('servicio_id')->references('id')->on('servicios');
-            $table->timestamps();
+            $table->foreign('plan_id')->references('id')->on('plan')
+            ->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
+            $table->foreign('servicio_id')->references('id')->on('servicios')
+            ->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
         });
     }
 

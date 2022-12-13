@@ -58,9 +58,10 @@ Route::delete('caracteristicas/{caracteristica}', [CaracteristicasController::cl
 //rutas servicios
 Route::get('servicios', [ServiciosController::class, 'index'])->name('servicioIndex');
 Route::post('servicios', [ServiciosController::class, 'guardar'])->name('servicioGuardar');
+Route::post('servicios', [ServiciosController::class, 'guardar'])->name('servicioGuardar');
 Route::put('servicios/{servicio}', [ServiciosController::class, 'actualizar'])->name('servicioActualizar');
 //En las rutas registramos:
-Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])->name('servicioEliminar');
+/* Route::delete('servicios/{servicio}', [ServiciosController::class, 'eliminar'])->name('servicioEliminar'); */
 
 /* Route::get('/', [DomoCaracteristicaController::class, 'index'])->name('domocaracteristicaindex'); */
 

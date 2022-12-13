@@ -24,7 +24,7 @@ class ServiciosActualizarRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'unique:servicios|min:5|max:20',
+            'nombre'=>'min:5|max:20',
             'descripcion'=>'min:10|max:99',
             'precio'=>'min:5|max:8',
             'tiempo'=>'',

@@ -18,8 +18,12 @@ return new class extends Migration
             $table->integer('domo_id')->unsigned();
             $table->integer('cantidad');
             $table->integer('caracteristica_id')->unsigned();
-            $table->foreign('domo_id')->references('id')->on('domo');
-            $table->foreign('caracteristica_id')->references('id')->on('caracteristica');
+            $table->foreign('domo_id')->references('id')->on('domo')
+            ->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
+            $table->foreign('caracteristica_id')->references('id')->on('caracteristica')
+            ->onDelete('NO ACTION')
+            ->onUpdate('NO ACTION');
             $table->timestamps();
         });
     }

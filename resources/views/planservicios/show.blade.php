@@ -46,7 +46,7 @@
                         <td>{{ $value->descripcion }}</td>
                         <td>{{ $value->precioplan }}</td>
                         <td>{{ $value->totalservicio }}</td>
-                        <td>{{ $value->totalprecio }}</td>
+                        <td>{{ $value->totalplan }}</td>
                         <td>
                             @if($value->estado == 1)
 

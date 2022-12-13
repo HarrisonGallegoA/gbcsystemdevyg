@@ -28,7 +28,7 @@ class ServiciosController extends Controller
         ]);
         Servicio::create($campos);
 
-        return redirect('servicios')->with('mensaje', 'Servicio guardo'); 
+        return redirect('servicios')->with('status', '1'); 
     
     }
 
@@ -43,8 +43,9 @@ class ServiciosController extends Controller
     
         ]);
         $servicio->update($campos);
+
     
-        return redirect('servicios')->with('mensaje', 'Servicio actualizado');
+        return redirect('servicios')->with('status', '2');
     }
 
 

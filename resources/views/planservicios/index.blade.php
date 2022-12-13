@@ -64,9 +64,8 @@
                     <div class="form-group col-6">
                         <label for="totalservicio">Total servicios</label>
                         <input id="totalservicio" type="number" class="form-control" placeholder="Total"
-                            name="totalservicio" >
+                            name="totalservicio" required>
                         <small class="text-danger">{{$errors->first('totalservicio')}}</small>
-
                     </div>
                     <div class="form-group col-6">
                         <label for="totalplan">Total</label>
